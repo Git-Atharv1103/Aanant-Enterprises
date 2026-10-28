@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" width="100" height="60" fill="none">
+  <!-- Aanant Enterprises Infinity Symbol Favicon -->
+  <defs>
+    <linearGradient id="navyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4D44A4"/>
+      <stop offset="100%" stop-color="#383080"/>
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F58220"/>
+      <stop offset="100%" stop-color="#DD7013"/>
+    </linearGradient>
+  </defs>
+  <!-- Background subtle round -->
+  <rect width="100" height="60" rx="12" fill="#FFFFFF"/>
+  <!-- Navy ribbon loop -->
+  <path d="M 28 42 C 16 42 12 33 12 28 C 12 21 18 16 26 16 C 36 16 44 26 50 30 C 56 34 64 44 74 44 C 82 44 88 39 88 32 C 88 27 84 21 78 18 C 84 23 83 31 77 34 C 71 37 63 31 56 26 C 48 20 38 12 26 12 C 14 12 8 19 8 28 C 8 38 15 46 28 46 C 36 46 43 41 49 36 C 44 38 36 42 28 42 Z" fill="url(#navyGrad)"/>
+  <!-- Orange ribbon loop intertwined -->
+  <path d="M 72 16 C 84 16 88 25 88 30 C 88 37 82 42 74 42 C 64 42 56 32 50 28 C 44 24 36 14 26 14 C 18 14 12 19 12 26 C 12 31 16 37 22 40 C 16 35 17 27 23 24 C 29 21 37 27 44 32 C 52 38 62 46 74 46 C 86 46 92 39 92 30 C 92 20 85 12 72 12 C 64 12 57 17 51 22 C 56 20 64 16 72 16 Z" fill="url(#orangeGrad)"/>
+</svg>

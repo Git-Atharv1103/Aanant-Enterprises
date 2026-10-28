@@ -1,0 +1,22 @@
+[
+  {
+    "referenceId": "AE-RFQ-20261027-4989",
+    "submittedAt": "2026-10-27T05:57:08.385Z",
+    "customerName": "Rahul Sharma",
+    "companyName": "Apex Engineering Ltd",
+    "email": "procurement@company.com",
+    "mobileNumber": "+919876543210",
+    "productName": "Aluminum Milled Flange",
+    "manufacturingRequirement": "Precision CNC milling with tight tolerances Precision CNC milling with tight tolerances plus minus 0.05mm.",
+    "manufacturingProcess": "CNC Machining",
+    "material": "",
+    "quantity": "50 pcs",
+    "dimensions": "",
+    "deliveryDate": "",
+    "additionalInstructions": "",
+    "drawingFile": null,
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+    "status": "pending_review"
+  }
+]
