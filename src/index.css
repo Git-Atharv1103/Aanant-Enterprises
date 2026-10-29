@@ -506,6 +506,119 @@
   transition: transform 0.15s ease-out, box-shadow 0.25s ease;
 }
 
+/* ─── Continuous Marquee Animations (Horizontal & Vertical) ───────────────────────────── */
+@keyframes marqueeLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marqueeRight {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes marqueeUp {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+@keyframes marqueeDown {
+  0% {
+    transform: translate3d(0, -50%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.marquee-track-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 34s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track-right {
+  display: flex;
+  width: max-content;
+  animation: marqueeRight 38s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track-up {
+  display: flex;
+  flex-direction: column;
+  animation: marqueeUp 26s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track-down {
+  display: flex;
+  flex-direction: column;
+  animation: marqueeDown 30s linear infinite;
+  will-change: transform;
+}
+
+.slider-container:hover .marquee-track-left,
+.slider-container:hover .marquee-track-right,
+.slider-container:hover .marquee-track-up,
+.slider-container:hover .marquee-track-down {
+  animation-play-state: paused;
+}
+
+/* Soft gradient edge fade */
+.fade-edges-x {
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.fade-edges-y {
+  mask-image: linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+
+/* ─── Service Card Specific Hover Animations ──────────────────── */
+@keyframes laserScanLine {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.animate-laser-scan {
+  animation: laserScanLine 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Layered cutout effect */
+.layer-cutout-1 {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+.group:hover .layer-cutout-1 {
+  transform: translate(6px, -6px);
+}
+
 /* ─── Reduced Motion ──────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
@@ -513,6 +626,14 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .marquee-track-left,
+  .marquee-track-right,
+  .marquee-track-up,
+  .marquee-track-down {
+    animation: none !important;
+    transform: none !important;
   }
 
   .reveal,

@@ -3,45 +3,32 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { BackToTop } from './components/BackToTop';
-import { StatusIndicator } from './components/StatusIndicator';
-import { NetworkStatusBanner } from './components/NetworkStatusBanner';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { HomePage } from './pages/HomePage';
-import { AboutPage } from './pages/AboutPage';
-import { ServicesPage } from './pages/ServicesPage';
-import { ProductsPage } from './pages/ProductsPage';
-import { CapabilitiesPage } from './pages/CapabilitiesPage';
-import { GalleryPage } from './pages/GalleryPage';
-import { CustomProductPage } from './pages/CustomProductPage';
-import { ContactPage } from './pages/ContactPage';
-import { PrivacyPage } from './pages/PrivacyPage';
-import { TermsPage } from './pages/TermsPage';
-import { NotFoundPage } from './pages/NotFoundPage';
-import type { ProductItem } from './types';
+import { ServiceDetailPage } from './pages/ServiceDetailPage';
+import { PlaceholderPage } from './pages/PlaceholderPage';
+import { IndustrialLabellingPage } from './pages/IndustrialLabellingPage';
+import { IndustrialCategoryDetailPage } from './pages/IndustrialCategoryDetailPage';
 
 export function App() {
+  const normalizeRoute = (raw: string): string => {
+    return raw.replace(/^[#/]+/, '').replace(/\/+$/, '').toLowerCase();
+  };
+
   const getInitialPage = () => {
-    const hash = window.location.hash.replace('#', '').trim().toLowerCase();
-    const validPages = [
-      'home',
-      'about',
-      'services',
-      'products',
-      'capabilities',
-      'gallery',
-      'custom-request',
-      'quote',
-      'contact',
-      'privacy',
-      'terms'
-    ];
-    if (!hash || hash === '') return 'home';
-    if (validPages.includes(hash)) return hash;
-    return '404';
+    const hash = window.location.hash;
+    const pathname = window.location.pathname;
+
+    const raw = hash && hash.length > 1 ? hash : pathname;
+    const normalized = normalizeRoute(raw);
+
+    if (!normalized || normalized === 'home' || normalized === 'services') {
+      return 'home';
+    }
+    return normalized;
   };
 
   const [currentPage, setCurrentPage] = useState<string>(getInitialPage);
-  const [selectedProductForQuote, setSelectedProductForQuote] = useState<ProductItem | null>(null);
 
   // Sync with browser hash and forward/back navigation
   useEffect(() => {
@@ -51,76 +38,119 @@ export function App() {
     };
 
     window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handleHashChange);
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('popstate', handleHashChange);
+    };
   }, []);
 
   const handleNavigate = (page: string) => {
-    setCurrentPage(page);
-    window.location.hash = page === 'home' ? '' : page;
+    const normalized = normalizeRoute(page);
+    setCurrentPage(normalized);
+    window.location.hash = normalized === 'home' ? '' : '/' + normalized;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleSelectProductForQuote = (product: ProductItem) => {
-    setSelectedProductForQuote(product);
-    handleNavigate('custom-request');
-  };
-
   const renderCurrentPage = () => {
-    switch (currentPage) {
-      case 'home':
-        return (
-          <HomePage
-            onNavigate={handleNavigate}
-            onSelectProductForQuote={handleSelectProductForQuote}
-          />
-        );
-      case 'about':
-        return <AboutPage onNavigate={handleNavigate} />;
-      case 'services':
-        return (
-          <ServicesPage
-            onNavigate={handleNavigate}
-            onSelectServiceForEnquiry={() => handleNavigate('custom-request')}
-          />
-        );
-      case 'products':
-        return (
-          <ProductsPage
-            onNavigate={handleNavigate}
-            onSelectProductForQuote={handleSelectProductForQuote}
-          />
-        );
-      case 'capabilities':
-        return <CapabilitiesPage onNavigate={handleNavigate} />;
-      case 'gallery':
-        return <GalleryPage onNavigate={handleNavigate} />;
-      case 'custom-request':
-        return <CustomProductPage initialProduct={selectedProductForQuote} />;
-      case 'quote':
-        return <CustomProductPage initialProduct={selectedProductForQuote} />;
-      case 'contact':
-        return <ContactPage />;
-      case 'privacy':
-        return <PrivacyPage onNavigate={handleNavigate} />;
-      case 'terms':
-        return <TermsPage onNavigate={handleNavigate} />;
-      default:
-        return <NotFoundPage onNavigate={handleNavigate} />;
+    const norm = normalizeRoute(currentPage);
+
+    // ── Homepage ──
+    if (norm === 'home' || norm === '') {
+      return <HomePage onNavigate={handleNavigate} />;
     }
+
+    // ── Industrial Labelling Main Service Page ──
+    if (
+      norm === 'services/industrial-labelling' ||
+      norm === 'industrial-labelling' ||
+      norm === 'service-industrial-labelling'
+    ) {
+      return <IndustrialLabellingPage onNavigate={handleNavigate} />;
+    }
+
+    // ── Industrial Labelling Six Category Detail Pages ──
+    if (norm.includes('industrial-labelling/')) {
+      const categorySlug = norm.replace('services/industrial-labelling/', '').replace('industrial-labelling/', '');
+      return (
+        <IndustrialCategoryDetailPage
+          categorySlug={categorySlug}
+          onNavigate={handleNavigate}
+        />
+      );
+    }
+
+    // Direct category slug access
+    const directCategories = [
+      'nameplates-industrial-identification',
+      'custom-printed-labels-plates',
+      'aluminium-name-plates',
+      'trafolite-plates',
+      'trafolite-labelling',
+      'sublimation-plates',
+      'industrial-plates',
+      'industrial-stickers',
+      'panel-door-locks',
+    ];
+    if (directCategories.includes(norm)) {
+      return (
+        <IndustrialCategoryDetailPage
+          categorySlug={norm}
+          onNavigate={handleNavigate}
+        />
+      );
+    }
+
+    // ── Other Service Detail Placeholder Pages ──
+    if (norm === 'service-corporate-gifting' || norm === 'corporate-gifting') {
+      return (
+        <ServiceDetailPage
+          serviceId="service-corporate-gifting"
+          onNavigate={handleNavigate}
+        />
+      );
+    }
+
+    if (norm === 'service-mdf-acrylic-cutouts' || norm === 'mdf-acrylic-cutouts') {
+      return (
+        <ServiceDetailPage
+          serviceId="service-mdf-acrylic-cutouts"
+          onNavigate={handleNavigate}
+        />
+      );
+    }
+
+    if (norm === 'service-personalised-gifting' || norm === 'personalised-gifting') {
+      return (
+        <ServiceDetailPage
+          serviceId="service-personalised-gifting"
+          onNavigate={handleNavigate}
+        />
+      );
+    }
+
+    // ── Top Navigation Placeholders ──
+    if (norm === 'about') {
+      return <PlaceholderPage title="About Us" onNavigate={handleNavigate} />;
+    }
+
+    if (norm === 'contact') {
+      return <PlaceholderPage title="Contact Us" onNavigate={handleNavigate} />;
+    }
+
+    // Fallback to Homepage
+    return <HomePage onNavigate={handleNavigate} />;
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-[#0B1020] text-slate-100 selection:bg-brand-orange selection:text-white">
-      {/* Network Online/Offline Status Banner */}
-      <NetworkStatusBanner />
-
-      {/* Header */}
+      {/* Top Sticky Header */}
       <Header
         currentPage={currentPage}
         onNavigate={handleNavigate}
       />
 
-      {/* Main Content Area */}
+      {/* Main Page Area */}
       <div className="flex-1 pb-16 md:pb-0">
         {renderCurrentPage()}
       </div>
@@ -131,7 +161,6 @@ export function App() {
       {/* Floating Utilities */}
       <WhatsAppButton />
       <BackToTop />
-      <StatusIndicator />
 
       {/* Mobile Bottom Navigation Bar */}
       <MobileBottomNav

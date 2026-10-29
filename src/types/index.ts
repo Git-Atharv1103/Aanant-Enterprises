@@ -18,6 +18,20 @@ export interface CompanyInfo {
   gstin: string;
   googleMapsUrl: string;
   instagramUrl: string;
+  machines?: string[];
+}
+
+export interface FlagshipService {
+  id: string;
+  title: string;
+  shortDescription: string;
+  description: string;
+  badge: string;
+  images: string[];
+  imageDirection: string;
+  hoverType: 'corporate' | 'industrial' | 'mdf-acrylic' | 'personalised';
+  route: string;
+  accentColor: string;
 }
 
 export type ProductCategory =

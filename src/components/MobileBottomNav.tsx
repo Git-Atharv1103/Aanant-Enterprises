@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Home, Package, FileText, Phone, MessageCircle } from 'lucide-react';
-import { COMPANY_INFO } from '../data/companyData';
+import React from 'react';
+import { Home, Layers, Info, PhoneCall } from 'lucide-react';
 
 interface MobileBottomNavProps {
   currentPage: string;
@@ -9,34 +8,62 @@ interface MobileBottomNavProps {
 
 export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
   currentPage,
-  onNavigate
+  onNavigate,
 }) => {
-  const [isOnline, setIsOnline] = useState<boolean>(() => {
-    return typeof navigator !== 'undefined' ? navigator.onLine : true;
-  });
-
-  useEffect(() => {
-    const handleOnline = () => setIsOnline(true);
-    const handleOffline = () => setIsOnline(false);
-
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
-
-    return () => {
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
-    };
-  }, []);
+  const handleServicesClick = () => {
+    if (currentPage === 'home') {
+      const el = document.getElementById('services');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+    }
+    onNavigate('home');
+    setTimeout(() => {
+      const el = document.getElementById('services');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
 
   const navItems = [
-    { id: 'home', label: 'Home', icon: Home },
-    { id: 'products', label: 'Products', icon: Package },
-    { id: 'custom-request', label: 'Custom', icon: FileText, highlight: true }
+    {
+      id: 'home',
+      label: 'Home',
+      icon: Home,
+      action: () => {
+        onNavigate('home');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+    },
+    {
+      id: 'services',
+      label: 'Services',
+      icon: Layers,
+      action: handleServicesClick,
+    },
+    {
+      id: 'about',
+      label: 'About',
+      icon: Info,
+      action: () => {
+        onNavigate('about');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+    },
+    {
+      id: 'contact',
+      label: 'Contact',
+      icon: PhoneCall,
+      action: () => {
+        onNavigate('contact');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+    },
   ];
 
   return (
     <nav
-      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-2xl px-2 py-1.5 flex items-center justify-around safe-area-inset-bottom"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0B1020]/95 backdrop-blur-xl border-t border-white/10 shadow-[0_-8px_32px_rgba(0,0,0,0.6)] px-3 py-2 flex items-center justify-around safe-bottom"
       aria-label="Mobile Navigation Bar"
     >
       {navItems.map((item) => {
@@ -45,56 +72,18 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
         return (
           <button
             key={item.id}
-            onClick={() => onNavigate(item.id)}
-            className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all duration-150 min-w-[56px] ${
-              item.highlight
-                ? 'text-brand-orange font-bold'
-                : isActive
-                ? 'text-brand-navy font-bold'
-                : 'text-gray-500 hover:text-brand-navy'
+            onClick={item.action}
+            className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all ${
+              isActive
+                ? 'text-brand-orange bg-brand-orange/15 font-bold'
+                : 'text-slate-400 hover:text-white'
             }`}
           >
-            <div className={`p-1 rounded-lg ${isActive ? 'bg-brand-navy/10' : ''}`}>
-              <Icon className="w-5 h-5" />
-            </div>
-            <span className="text-[10px] tracking-tight mt-0.5">{item.label}</span>
+            <Icon className="w-4 h-4 mb-0.5" />
+            <span className="text-[10px] font-mono tracking-tight">{item.label}</span>
           </button>
         );
       })}
-
-      {/* Call Button */}
-      <a
-        href={`tel:${COMPANY_INFO.phones[0]}`}
-        className="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl text-gray-500 hover:text-brand-navy min-w-[56px]"
-        aria-label="Call Aanant Enterprises"
-      >
-        <div className="p-1 rounded-lg">
-          <Phone className="w-5 h-5 text-emerald-600" />
-        </div>
-        <span className="text-[10px] tracking-tight mt-0.5 text-emerald-700 font-semibold">Call</span>
-      </a>
-
-      {/* WhatsApp Button */}
-      <a
-        href={`https://wa.me/${COMPANY_INFO.primaryWhatsApp}?text=Hello%20Aanant%20Enterprises,%20I%20am%20interested%20in%20your%20laser%20and%20CNC%20services.`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl text-gray-500 hover:text-green-600 min-w-[56px] relative"
-        aria-label="Chat on WhatsApp"
-      >
-        <div className="p-1 rounded-lg">
-          <MessageCircle className="w-5 h-5 text-green-500" />
-        </div>
-        <span className="text-[10px] tracking-tight mt-0.5 text-green-600 font-semibold">WhatsApp</span>
-        
-        {/* Offline indicator badge if disconnected */}
-        {!isOnline && (
-          <span
-            className="absolute top-1 right-2 w-2 h-2 rounded-full bg-amber-500 border border-white"
-            title="Offline mode"
-          />
-        )}
-      </a>
     </nav>
   );
 };

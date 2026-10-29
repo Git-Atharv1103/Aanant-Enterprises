@@ -3,30 +3,106 @@ import type {
   ProductCategory,
   ProductItem,
   GalleryItem,
-  ServiceItem
+  ServiceItem,
+  FlagshipService
 } from '../types';
 
 export const COMPANY_INFO: CompanyInfo = {
   name: 'Aanant Enterprises',
   tagline: 'Infinite Solutions',
   address: {
-    line1: 'Krushiraj Building, S. No. 137/1/2, Sinhgad Road',
-    line2: 'Opp. Ganesh Mangal Karyalay',
-    landmark: 'Pandurang Industrial Area, Nanded Phata',
+    line1: 'Building, S, No. 137/1/2, Krushiraj, Sinhgad Rd',
+    line2: 'Opposite Ganesh Mangal Karyalaya, Fule Market',
+    landmark: 'Pandurang Industrial Area, Nanded Fata, Nanded',
     area: 'Sinhgad Road',
     city: 'Pune',
-    pincode: '411041',
+    pincode: '411068',
     state: 'Maharashtra',
     country: 'India',
-    fullFormatted: 'Krushiraj Building, S. No. 137/1/2, Sinhgad Road, Opp. Ganesh Mangal Karyalay, Pandurang Industrial Area, Nanded Phata, Pune – 411041, Maharashtra, India.'
+    fullFormatted: 'Building, S, No. 137/1/2, Krushiraj, Sinhgad Rd, opposite Ganesh Mangal Karyalaya, Fule Market, Nanded Fata, Pandurang Industrial Area, Nanded, Pune, Maharashtra 411068, India.'
   },
-  phones: ['+91 7387417382', '+91 9049397967'],
+  phones: ['+91 73874 17382', '+91 90493 97967'],
   primaryWhatsApp: '917387417382',
   email: 'aanantenterprises03@gmail.com',
   gstin: '27CMRPK4719F1ZP',
-  googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Krushiraj+Building,+S.+No.+137%2F1%2F2,+Sinhgad+Road,+Opposite+Ganesh+Mangal+Karyalay,+Pandurang+Industrial+Area,+Nanded+Phata,+Pune+411041',
-  instagramUrl: 'https://www.instagram.com/aanantenterprises03/'
+  googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Krushiraj+Building,+S.+No.+137%2F1%2F2,+Sinhgad+Road,+Opposite+Ganesh+Mangal+Karyalay,+Pandurang+Industrial+Area,+Nanded+Fata,+Pune+411068',
+  instagramUrl: 'https://www.instagram.com/aanantenterprises03/',
+  machines: [
+    'CO2 Laser Machine',
+    'Fiber Laser Engraving Machine'
+  ]
 };
+
+export const FLAGSHIP_SERVICES: FlagshipService[] = [
+  {
+    id: 'corporate-gifting',
+    title: 'Corporate Gifting',
+    shortDescription: 'Create memorable branded gifts for businesses, teams, events, and special occasions.',
+    description: 'Create memorable branded gifts for businesses, teams, events, and special occasions. Tailored with laser precision on executive desk accessories, engraved gift sets, and custom corporate merchandise.',
+    badge: 'Corporate Branding',
+    images: [
+      '/images/planner-diary-h3309.jpg',
+      '/images/chesscrest-diary-h3310.jpg',
+      '/images/office-planner-h1048.jpg',
+      '/images/corporate-gifting-flyer.jpg',
+      '/images/notebook-diary-h3302.jpg',
+      '/images/office-planner-h1072.jpg'
+    ],
+    imageDirection: 'Executive planner diaries, leatherette notebooks, branded desk accessories, and corporate gift sets.',
+    hoverType: 'corporate',
+    route: 'service-corporate-gifting',
+    accentColor: '#FF6B00'
+  },
+  {
+    id: 'industrial-labelling',
+    title: 'Industrial Labelling',
+    shortDescription: 'Explore precision laser marking and labelling solutions for industrial identification and product branding.',
+    description: 'Explore precision laser marking and labelling solutions for industrial identification and product branding. Permanent fiber laser marking on metallic equipment plates, serial barcodes, and asset tags.',
+    badge: 'Fiber Laser Marking',
+    images: [
+      '/images/industrial-labelling/aluminium-name-plates/IMG_7550.png',
+      '/images/industrial-labelling/trafolite-labelling/IMG_7561.png',
+      '/images/industrial-labelling/sublimation-plates/IMG_7568.png',
+      '/images/laser-marking-action.jpg'
+    ],
+    imageDirection: 'Realistic industrial nameplates, metal identification tags, engraved serial plates, and fiber-laser-marked metal components.',
+    hoverType: 'industrial',
+    route: '/services/industrial-labelling',
+    accentColor: '#3478F6'
+  },
+  {
+    id: 'mdf-acrylic-cutouts',
+    title: 'MDF & Acrylic Cutouts',
+    shortDescription: 'Discover custom-cut shapes, decorative elements, signage, and creative designs made to your requirements.',
+    description: 'Discover custom-cut shapes, decorative elements, signage, and creative designs made to your requirements. Intricate vector cutting with sharp contours and multi-layered dimensional depth.',
+    badge: 'CO2 Laser Cutting',
+    images: [
+      '/images/decorative-panel.jpg',
+      '/images/laser-parts.jpg',
+      '/images/laser-action.jpg'
+    ],
+    imageDirection: 'MDF cutouts, acrylic lettering, decorative shapes, layered acrylic designs, and precision laser-cut decorative products.',
+    hoverType: 'mdf-acrylic',
+    route: 'service-mdf-acrylic-cutouts',
+    accentColor: '#00E5FF'
+  },
+  {
+    id: 'personalised-gifting',
+    title: 'Personalised Gifting',
+    shortDescription: 'Make every occasion special with personalised products featuring names, messages, and custom designs.',
+    description: 'Make every occasion special with personalised products featuring names, messages, and custom designs. Custom keychains, engraved gifts, name plaques, and celebratory keepsakes.',
+    badge: 'Personalised Keepsakes',
+    images: [
+      '/images/personalized-gifts.jpg',
+      '/images/custom-nameplate.jpg',
+      '/images/decorative-panel.jpg'
+    ],
+    imageDirection: 'Personalised keychains, engraved gifts, custom nameplates, photo-engraved keepsakes, and other relevant personalised products.',
+    hoverType: 'personalised',
+    route: 'service-personalised-gifting',
+    accentColor: '#FFB547'
+  }
+];
 
 export const PRODUCT_CATEGORIES: ProductCategory[] = [
   'Laser Engraved Products',
@@ -334,28 +410,128 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   }
 ];
 
-export const FOUR_STEP_PROCESS = [
+export const EIGHT_STEP_PROCESS = [
   {
     step: '01',
-    title: 'SHARE YOUR IDEA',
-    description: 'Share your product idea, text, logo, design, or reference image with our team through our website form, email, or WhatsApp.'
+    title: 'Requirement Discussion',
+    description: 'Understand customer requirements, quantity, budget, and branding needs in depth.',
+    iconName: 'MessageSquare'
   },
   {
     step: '02',
-    title: 'SELECT THE WORK TYPE',
-    description: 'Indicate whether you require laser engraving/marking, laser cutting, CNC cutting, or custom product development.'
+    title: 'Product Selection',
+    description: 'Recommend the most suitable products and materials tailored to your specific application.',
+    iconName: 'PackageCheck'
   },
   {
     step: '03',
-    title: 'DISCUSS AND CONFIRM',
-    description: 'Our team reviews your design, material, dimensions, quantity, and machine compatibility before confirming the quotation and lead schedule.'
+    title: 'Design & Branding',
+    description: 'Prepare precision vector artwork, typography, and branding mockups for customer approval.',
+    iconName: 'Palette'
   },
   {
     step: '04',
-    title: 'PRODUCTION',
-    description: 'After the specifications, price, and delivery arrangements are agreed upon, your customized order proceeds directly to production.'
+    title: 'Sample Approval',
+    description: 'Share digital renders and physical prototypes for verification before commencing production.',
+    iconName: 'CheckCircle2'
+  },
+  {
+    step: '05',
+    title: 'Production',
+    description: 'Begin high-speed precision manufacturing using fiber laser, CO2 laser, and UV printing technology.',
+    iconName: 'Cpu'
+  },
+  {
+    step: '06',
+    title: 'Quality Inspection',
+    description: 'Perform rigorous dimensional, surface finish, and durability checks on every item before dispatch.',
+    iconName: 'ShieldCheck'
+  },
+  {
+    step: '07',
+    title: 'Packaging',
+    description: 'Execute premium gift presentation and heavy-duty protective packaging for secure transit.',
+    iconName: 'Gift'
+  },
+  {
+    step: '08',
+    title: 'Delivery',
+    description: 'Deliver products reliably across Pune and pan-India strictly within committed timelines.',
+    iconName: 'Truck'
   }
 ];
+
+// Compatibility alias
+export const FOUR_STEP_PROCESS = EIGHT_STEP_PROCESS;
+
+export const WHY_CHOOSE_US_POINTS = [
+  {
+    title: 'Premium Quality Products',
+    description: 'Top-tier materials and flawless laser finishes that create lasting corporate impressions.',
+    tag: 'Flawless Finish',
+    iconName: 'Sparkles',
+    accent: '#FF6B00'
+  },
+  {
+    title: 'Customized Design Solutions',
+    description: 'Bespoke designs tailored to your corporate branding, logo specifications, and aesthetic themes.',
+    tag: 'Tailored Art',
+    iconName: 'Palette',
+    accent: '#3478F6'
+  },
+  {
+    title: 'Bulk Order Capability',
+    description: 'Equipped with industrial-grade laser machinery capable of high-volume batch production.',
+    tag: 'Scalable Output',
+    iconName: 'Layers',
+    accent: '#00E5FF'
+  },
+  {
+    title: 'Competitive Pricing',
+    description: 'Direct manufacturer pricing with transparent quotation structures for maximum ROI.',
+    tag: 'Direct Workshop',
+    iconName: 'CheckCircle2',
+    accent: '#10B981'
+  },
+  {
+    title: 'Quick Turnaround Time',
+    description: 'Optimized production workflows engineered to deliver urgent and event-driven orders on schedule.',
+    tag: 'Fast Lead Times',
+    iconName: 'Zap',
+    accent: '#FFB547'
+  },
+  {
+    title: 'Professional Design Assistance',
+    description: 'Expert engineering support to refine vectors, optimize layouts, and advise on material compatibility.',
+    tag: 'In-House CAD',
+    iconName: 'Sliders',
+    accent: '#818CF8'
+  },
+  {
+    title: 'Reliable Quality Checks',
+    description: 'Multi-stage quality audits guaranteeing sharp contrast, zero deburring flaws, and durability.',
+    tag: 'Zero Defects',
+    iconName: 'ShieldCheck',
+    accent: '#00D26A'
+  },
+  {
+    title: 'PAN India Delivery',
+    description: 'Trusted nationwide shipping network ensuring safely packed products reach any corner of India.',
+    tag: 'Nationwide Reach',
+    iconName: 'Truck',
+    accent: '#38BDF8'
+  },
+  {
+    title: 'Customer-Centric Service',
+    description: 'Dedicated client support from initial consultation to final unboxing, focused on lasting partnerships.',
+    tag: 'Trusted Partner',
+    iconName: 'Handshake',
+    accent: '#F43F5E'
+  }
+];
+
+// Compatibility alias
+export const BUSINESS_APPROACH_POINTS = WHY_CHOOSE_US_POINTS;
 
 export const ABOUT_SECTIONS = [
   {
@@ -420,36 +596,4 @@ export const CAPABILITIES_DATA = {
   }
 };
 
-export const BUSINESS_APPROACH_POINTS = [
-  {
-    title: 'Drawing-Centric Execution',
-    description: 'We cut and engrave strictly to customer designs, vector artwork, CAD drawings, or clear physical samples.',
-    iconName: 'Cog'
-  },
-  {
-    title: 'Custom Product Flexibility',
-    description: 'Whether producing a single personalised creation or repeatable batch quantities, we tailor setups to project requirements.',
-    iconName: 'Layers'
-  },
-  {
-    title: 'Dimensional Accuracy',
-    description: 'Consistent cutting tolerances and clean edge finishes through programmed CNC and laser machine controls.',
-    iconName: 'CheckCircle2'
-  },
-  {
-    title: 'Transparent Technical Reviews',
-    description: 'We evaluate drawing files honestly, confirming machine feasibility and material compatibility before taking orders.',
-    iconName: 'MessageSquare'
-  },
-  {
-    title: 'Design Confidentiality',
-    description: 'Customer artwork, vector logos, and engineering prints are kept strictly confidential for production use only.',
-    iconName: 'ShieldCheck'
-  },
-  {
-    title: 'Direct Collaborative Support',
-    description: 'Direct communication with our Pune workshop via phone, email, and WhatsApp to discuss revisions and custom requests.',
-    iconName: 'Handshake'
-  }
-];
 
