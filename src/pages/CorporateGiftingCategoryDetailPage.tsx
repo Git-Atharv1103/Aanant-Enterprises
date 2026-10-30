@@ -40,6 +40,13 @@ export const CorporateGiftingCategoryDetailPage: React.FC<
 
   const [activeImageIdx, setActiveImageIdx] = useState<number>(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
+  const [pageReady, setPageReady] = useState<boolean>(false);
+
+  // Trigger entrance animation shortly after mount
+  useEffect(() => {
+    const t = setTimeout(() => setPageReady(true), 40);
+    return () => clearTimeout(t);
+  }, []);
 
   // Keyboard navigation for lightbox
   useEffect(() => {
@@ -70,7 +77,7 @@ export const CorporateGiftingCategoryDetailPage: React.FC<
 
   return (
     <main
-      className="bg-transparent text-white min-h-screen pt-28 pb-20 relative overflow-hidden select-none"
+      className="bg-transparent text-white min-h-screen pt-20 sm:pt-24 pb-16 relative overflow-hidden select-none"
       role="main"
     >
       {/* ── Background Diwali Ambience & Radiant Lighting ── */}
@@ -99,10 +106,14 @@ export const CorporateGiftingCategoryDetailPage: React.FC<
       <RangoliCornerPattern className="hidden lg:block absolute bottom-0 right-0 z-0 rotate-90 opacity-40" />
       <RangoliCornerPattern className="hidden lg:block absolute bottom-0 left-0 z-0 opacity-40" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div
+        className={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-7 transition-all duration-500 ${
+          pageReady ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+        }`}
+      >
 
         {/* ── Breadcrumb & Navigation ── */}
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-3">
           <nav
             aria-label="Breadcrumb"
             className="flex items-center gap-2 text-xs font-mono text-slate-400"
@@ -136,7 +147,7 @@ export const CorporateGiftingCategoryDetailPage: React.FC<
         </div>
 
         {/* ── Header Banner with Diwali Festive Accents ── */}
-        <div className="rounded-3xl border border-amber-500/30 bg-[#0E1628]/90 backdrop-blur-xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">
+        <div className="rounded-3xl border border-amber-500/30 bg-[#0E1628]/90 backdrop-blur-xl p-5 sm:p-8 relative overflow-hidden shadow-2xl">
           <div className="relative z-10 space-y-4 max-w-3xl">
             <div className="flex items-center gap-3">
               <RealisticDiya size={32} className="shrink-0 -mt-1 hidden sm:inline-flex" />
@@ -189,7 +200,7 @@ export const CorporateGiftingCategoryDetailPage: React.FC<
           {/* Left Column (7 cols): Main Product Image Showcase with Lightbox */}
           <div className="lg:col-span-7 space-y-4">
             <div
-              className="relative h-[380px] sm:h-[480px] rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-[#090E1A] via-[#0E1628] to-[#121A2D] flex items-center justify-center p-8 group cursor-pointer shadow-2xl"
+              className="relative h-[320px] sm:h-[420px] rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-[#090E1A] via-[#0E1628] to-[#121A2D] flex items-center justify-center p-6 group cursor-pointer shadow-2xl"
               onClick={() => setIsLightboxOpen(true)}
               role="button"
               tabIndex={0}
