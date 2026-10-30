@@ -2,6 +2,7 @@ import React from 'react';
 import { Phone, Mail, MapPin, ExternalLink, ShieldCheck, Clock, Building2, Sparkles } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
 import { EnquiryForm } from './EnquiryForm';
+import { RealisticDiya, RangoliCornerPattern } from './DiwaliFestiveDecor';
 
 interface ContactSectionProps {
   initialSubject?: string;
@@ -17,14 +18,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   return (
     <section className={`py-20 sm:py-24 bg-gradient-to-b from-[#090d16] via-[#0d1322] to-[#070a10] text-slate-100 border-t border-white/10 relative overflow-hidden ${isStandalonePage ? 'pt-32' : ''}`} id="contact-section">
       <div className="absolute inset-0 industrial-grid-dark opacity-35 pointer-events-none" />
+      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 left-0 z-0" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center space-y-3 mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-orange/20 border border-brand-orange/30 text-brand-orange text-xs font-mono font-bold tracking-wider uppercase">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Direct Workshop Connect</span>
+          <div className="flex items-center justify-center gap-2.5">
+            <RealisticDiya size={26} className="shrink-0 -mt-1 hidden sm:inline-flex" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-orange/20 border border-brand-orange/30 text-brand-orange text-xs font-mono font-bold tracking-wider uppercase">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Direct Workshop Connect • Diwali 2026</span>
+            </div>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
             Contact Aanant Enterprises

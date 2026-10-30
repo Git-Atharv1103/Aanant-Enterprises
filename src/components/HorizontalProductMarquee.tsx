@@ -155,11 +155,7 @@ export const HorizontalProductMarquee: React.FC<HorizontalProductMarqueeProps> =
                 <img
                   src={item.image}
                   alt={item.title}
-                  className={`w-full h-full transition-transform duration-500 ease-out group-hover:scale-110 ${
-                    item.isTransparentProduct
-                      ? 'object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]'
-                      : 'object-cover'
-                  }`}
+                  className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.6)] transition-transform duration-500 ease-out group-hover:scale-108"
                   loading="lazy"
                 />
 
@@ -206,3 +202,4 @@ export const HorizontalProductMarquee: React.FC<HorizontalProductMarqueeProps> =
     </section>
   );
 };
+

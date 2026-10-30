@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { useScrollReveal } from '../utils/useScrollReveal';
 import { TiltCard } from './TiltCard';
+import { RealisticDiya, RangoliCornerPattern } from './DiwaliFestiveDecor';
 
 interface AboutSectionProps {
   onNavigate?: (page: string) => void;
@@ -31,14 +32,18 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate }) => {
       <div className="absolute inset-0 industrial-grid-dark opacity-35 pointer-events-none" />
       <div className="absolute top-1/3 -left-36 w-96 h-96 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-0 w-96 h-96 bg-brand-electric/10 rounded-full blur-3xl pointer-events-none" />
+      <RangoliCornerPattern className="hidden lg:block absolute top-0 right-0 z-0 rotate-90" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
 
         {/* ── 1. Editorial Header ── */}
         <div className="reveal space-y-4 max-w-4xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-orange/15 border border-brand-orange/30 text-brand-orange text-xs font-mono font-bold tracking-wider uppercase">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>About Aanant Enterprises • Pune</span>
+          <div className="flex items-center gap-3">
+            <RealisticDiya size={28} className="shrink-0 -mt-1 hidden sm:inline-flex" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-orange/15 border border-brand-orange/30 text-brand-orange text-xs font-mono font-bold tracking-wider uppercase">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>About Aanant Enterprises • Pune</span>
+            </div>
           </div>
 
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.12] tracking-tight">

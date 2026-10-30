@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
+import { RealisticDiya } from './DiwaliFestiveDecor';
 
 interface HeaderProps {
   currentPage: string;
@@ -86,7 +87,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? 'bg-[#0B1020]/95 backdrop-blur-xl border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)] py-3'
+            ? 'bg-[#0B1020]/95 backdrop-blur-xl border-b border-amber-500/25 shadow-[0_8px_32px_rgba(245,158,11,0.12)] py-3'
             : 'bg-[#0B1020]/40 backdrop-blur-md border-b border-white/5 py-4 lg:py-5'
         }`}
         role="banner"
@@ -116,6 +117,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                 <div className="flex items-center gap-2">
                   <span className="text-base sm:text-lg font-extrabold text-white tracking-tight leading-none group-hover:text-amber-300 transition-colors">
                     Aanant Enterprises
+                  </span>
+                  <span className="hidden lg:inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-[10px] font-mono font-bold text-amber-300">
+                    <RealisticDiya size={16} className="-mt-0.5 inline-block" />
+                    <span>Diwali 2026</span>
                   </span>
                 </div>
                 <span className="text-[11px] font-mono tracking-widest text-brand-orange font-semibold uppercase mt-0.5">

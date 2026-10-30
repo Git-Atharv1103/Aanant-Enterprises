@@ -1,6 +1,7 @@
 import React from 'react';
 import { MapPin, Phone, Mail, ArrowUpRight, ExternalLink, Cpu, Zap } from 'lucide-react';
 import { COMPANY_INFO, FLAGSHIP_SERVICES } from '../data/companyData';
+import { RealisticDiya } from './DiwaliFestiveDecor';
 
 interface FooterProps {
   onNavigate: (page: string) => void;
@@ -150,23 +151,36 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         </div>
 
+        {/* ── Diwali 2026 Festive Greeting Banner ── */}
+        <div className="my-8 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/25 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-amber-200 backdrop-blur-md">
+          <div className="flex items-center gap-2.5">
+            <RealisticDiya size={26} className="shrink-0 -mt-1" />
+            <span className="font-mono font-bold text-amber-300">
+              ✨ Wishing You a Joyous & Prosperous Diwali 2026
+            </span>
+          </div>
+          <span className="text-[11px] font-mono text-slate-300">
+            Aanant Enterprises • Precision Laser Engraving & Corporate Gifting
+          </span>
+        </div>
+
         {/* ── Copyright & Bottom Strip ── */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
+        <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
           <div>
             © {currentYear} Aanant Enterprises. All rights reserved.
           </div>
           <div className="flex items-center gap-6">
             <button
               onClick={() => handleNav('about')}
-              className="hover:text-slate-300 transition-colors"
+              className="hover:text-amber-300 transition-colors"
             >
-              About Us (Placeholder)
+              About Us
             </button>
             <button
               onClick={() => handleNav('contact')}
-              className="hover:text-slate-300 transition-colors"
+              className="hover:text-amber-300 transition-colors"
             >
-              Contact (Placeholder)
+              Contact Us
             </button>
           </div>
         </div>

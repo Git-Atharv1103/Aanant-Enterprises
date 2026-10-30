@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, Clock, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
+import { RealisticDiya, RangoliCornerPattern } from '../components/DiwaliFestiveDecor';
 
 interface PlaceholderPageProps {
   title: string;
@@ -12,10 +13,11 @@ export const PlaceholderPage: React.FC<PlaceholderPageProps> = ({ title, onNavig
     <main className="bg-[#0B1020] text-white min-h-[85vh] pt-28 pb-20 relative overflow-hidden flex items-center">
       {/* Background Ambience */}
       <div className="absolute inset-0 industrial-grid-dark opacity-30 pointer-events-none" />
+      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 right-0 z-0 rotate-90" />
       <div
         className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(255,107,0,0.12) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(255,107,0,0.12) 0%, rgba(245,158,11,0.06) 40%, transparent 70%)',
         }}
       />
 
@@ -33,9 +35,12 @@ export const PlaceholderPage: React.FC<PlaceholderPageProps> = ({ title, onNavig
 
         {/* Placeholder Badge & Title */}
         <div className="space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-mono font-bold uppercase tracking-wider">
-            <Clock className="w-3.5 h-3.5" />
-            <span>Page In Preparation • Phase 2</span>
+          <div className="flex items-center justify-center gap-2.5">
+            <RealisticDiya size={28} className="shrink-0 -mt-1 hidden sm:inline-flex" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-mono font-bold uppercase tracking-wider">
+              <Clock className="w-3.5 h-3.5" />
+              <span>Diwali 2026 Edition • {title}</span>
+            </div>
           </div>
 
           <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight">

@@ -8,6 +8,8 @@ interface SliderItem {
   badge: string;
   image: string;
   icon: React.ElementType;
+  fitMode: 'contain' | 'cover';
+  accentColor: string;
 }
 
 const COLUMN_ONE_ITEMS: SliderItem[] = [
@@ -18,6 +20,8 @@ const COLUMN_ONE_ITEMS: SliderItem[] = [
     badge: 'Corporate Gifting',
     image: '/images/planner-diary-h3309.jpg',
     icon: Sparkles,
+    fitMode: 'contain',
+    accentColor: '#FF6B00',
   },
   {
     id: 'p-2',
@@ -26,14 +30,18 @@ const COLUMN_ONE_ITEMS: SliderItem[] = [
     badge: 'Corporate Gifting',
     image: '/images/notebook-diary-h3302.jpg',
     icon: Sparkles,
+    fitMode: 'contain',
+    accentColor: '#FFB547',
   },
   {
     id: 'p-3',
-    title: 'Fiber Laser Marked Plates',
-    subtitle: 'Permanent Industrial Marking',
+    title: 'Fiber Laser Marking In Action',
+    subtitle: 'Permanent Micro-Scale Marking',
     badge: 'Industrial Labelling',
     image: '/images/laser-marking-action.jpg',
     icon: Zap,
+    fitMode: 'cover',
+    accentColor: '#3478F6',
   },
   {
     id: 'p-4',
@@ -42,6 +50,8 @@ const COLUMN_ONE_ITEMS: SliderItem[] = [
     badge: 'Corporate Gifting',
     image: '/images/office-planner-h1048.jpg',
     icon: ShieldCheck,
+    fitMode: 'contain',
+    accentColor: '#FF6B00',
   },
 ];
 
@@ -53,6 +63,8 @@ const COLUMN_TWO_ITEMS: SliderItem[] = [
     badge: 'Corporate Gifting',
     image: '/images/chesscrest-diary-h3310.jpg',
     icon: Sparkles,
+    fitMode: 'contain',
+    accentColor: '#FF6B00',
   },
   {
     id: 'p-6',
@@ -61,6 +73,8 @@ const COLUMN_TWO_ITEMS: SliderItem[] = [
     badge: 'Corporate Gifting',
     image: '/images/office-planner-h1072.jpg',
     icon: Zap,
+    fitMode: 'contain',
+    accentColor: '#FFB547',
   },
   {
     id: 'p-7',
@@ -69,6 +83,8 @@ const COLUMN_TWO_ITEMS: SliderItem[] = [
     badge: 'Corporate Gifting',
     image: '/images/corporate-gifting-flyer.jpg',
     icon: Sparkles,
+    fitMode: 'contain',
+    accentColor: '#3478F6',
   },
   {
     id: 'p-8',
@@ -77,6 +93,8 @@ const COLUMN_TWO_ITEMS: SliderItem[] = [
     badge: 'Industrial Labelling',
     image: '/images/industrial-labelling/aluminium-name-plates/IMG_7550.png',
     icon: ShieldCheck,
+    fitMode: 'contain',
+    accentColor: '#3478F6',
   },
 ];
 
@@ -99,13 +117,11 @@ export const ProductMarqueeSlider: React.FC<ProductMarqueeSliderProps> = ({ onCa
     return () => mediaQuery.removeEventListener('change', listener);
   }, []);
 
-  // 3D Parallax tilt on mouse hover
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (prefersReducedMotion || !containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-
     const maxRotation = 4;
     const rotY = (x / (rect.width / 2)) * maxRotation;
     const rotX = -(y / (rect.height / 2)) * maxRotation;
@@ -116,7 +132,6 @@ export const ProductMarqueeSlider: React.FC<ProductMarqueeSliderProps> = ({ onCa
     setRotate({ x: 0, y: 0 });
   };
 
-  // We duplicate each array to create seamless infinite vertical loop
   const colOneCombined = [...COLUMN_ONE_ITEMS, ...COLUMN_ONE_ITEMS];
   const colTwoCombined = [...COLUMN_TWO_ITEMS, ...COLUMN_TWO_ITEMS];
 
@@ -125,6 +140,79 @@ export const ProductMarqueeSlider: React.FC<ProductMarqueeSliderProps> = ({ onCa
     if (badge.toLowerCase().includes('industrial') || badge.toLowerCase().includes('marking')) return 'services/industrial-labelling';
     if (badge.toLowerCase().includes('acrylic') || badge.toLowerCase().includes('mdf')) return 'mdf-acrylic-cutouts';
     return 'personalised-gifting';
+  };
+
+  const renderSliderCard = (item: SliderItem, uniqueKey: string) => {
+    const Icon = item.icon;
+    return (
+      <div
+        key={uniqueKey}
+        onClick={() => onCardClick && onCardClick(mapBadgeToService(item.badge))}
+        className={`group relative w-full h-64 sm:h-72 rounded-2xl overflow-hidden shrink-0 border border-white/10 bg-[#0E1628]/95 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-brand-orange/60 hover:shadow-[0_16px_36px_rgba(255,107,0,0.3)] hover:scale-[1.02] cursor-pointer flex flex-col justify-between`}
+      >
+        {/* Visual Showcase Bed with ambient light */}
+        <div className="relative w-full h-44 overflow-hidden flex items-center justify-center p-3 bg-gradient-to-br from-[#070B16] via-[#0E1628] to-[#121A2D]">
+          {/* Subtle grid pattern */}
+          <div className="absolute inset-0 industrial-grid-dark opacity-15 pointer-events-none" />
+
+          {/* Ambient backlight glow */}
+          <div
+            className="absolute w-28 h-28 rounded-full blur-2xl pointer-events-none opacity-25 group-hover:opacity-70 transition-opacity"
+            style={{ backgroundColor: item.accentColor }}
+          />
+
+          <img
+            src={item.image}
+            alt={item.title}
+            className={`w-full h-full transition-transform duration-700 ease-out group-hover:scale-105 ${
+              item.fitMode === 'contain'
+                ? 'object-contain filter drop-shadow-[0_8px_18px_rgba(0,0,0,0.7)]'
+                : 'object-cover object-center'
+            }`}
+            loading="lazy"
+          />
+
+          {/* Top Badge */}
+          <div className="absolute top-2.5 left-2.5 z-10">
+            <span
+              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full backdrop-blur-md border text-[10px] font-mono font-bold uppercase tracking-wider shadow-sm"
+              style={{
+                backgroundColor: `${item.accentColor}20`,
+                borderColor: `${item.accentColor}50`,
+                color: item.accentColor,
+              }}
+            >
+              <Icon className="w-3 h-3" />
+              <span>{item.badge}</span>
+            </span>
+          </div>
+
+          {/* Laser scanning line on hover */}
+          <div
+            className="absolute inset-x-0 h-0.5 opacity-0 group-hover:opacity-100 group-hover:animate-laser-scan pointer-events-none"
+            style={{
+              background: `linear-gradient(90deg, transparent, ${item.accentColor}, transparent)`,
+            }}
+          />
+        </div>
+
+        {/* Bottom Pinned Metadata (Clean, never covered by image) */}
+        <div className="p-3 bg-[#0B1020]/90 border-t border-white/5 space-y-0.5 z-10">
+          <h4 className="text-xs sm:text-sm font-bold text-white leading-tight truncate group-hover:text-amber-200 transition-colors">
+            {item.title}
+          </h4>
+          <p className="text-[10px] sm:text-[11px] text-slate-400 truncate font-light">
+            {item.subtitle}
+          </p>
+        </div>
+
+        {/* Bottom edge accent */}
+        <div
+          className="absolute bottom-0 inset-x-0 h-0.5 opacity-40 group-hover:opacity-100 transition-opacity"
+          style={{ backgroundColor: item.accentColor }}
+        />
+      </div>
+    );
   };
 
   return (
@@ -145,119 +233,29 @@ export const ProductMarqueeSlider: React.FC<ProductMarqueeSliderProps> = ({ onCa
         }}
       >
         {/* Viewport Frame with Soft Vertical Fade Masks Top & Bottom */}
-        <div className="relative h-[500px] sm:h-[560px] lg:h-[600px] overflow-hidden fade-edges-y">
-          
+        <div className="relative h-[520px] sm:h-[580px] lg:h-[620px] overflow-hidden fade-edges-y">
           <div className="grid grid-cols-2 gap-4 sm:gap-5 h-full">
 
-            {/* ── Column 1: Vertical Slide Moving UPWARDS ── */}
+            {/* Column 1: Vertical Slide Moving UPWARDS */}
             <div className="relative overflow-hidden flex flex-col">
               <div className="marquee-track-up gap-4 sm:gap-5 flex flex-col">
-                {colOneCombined.map((item, index) => {
-                  const Icon = item.icon;
-                  return (
-                    <div
-                      key={`col1-${item.id}-${index}`}
-                      onClick={() => onCardClick && onCardClick(mapBadgeToService(item.badge))}
-                      className="group relative w-full h-60 sm:h-64 md:h-72 rounded-2xl overflow-hidden shrink-0 border border-white/10 bg-[#0E1628] backdrop-blur-md shadow-xl transition-all duration-300 hover:border-brand-orange/60 hover:shadow-[0_16px_36px_rgba(255,107,0,0.3)] hover:scale-[1.02] cursor-pointer"
-                    >
-                      {/* Background Product Image */}
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
-                        loading={index < 4 ? 'eager' : 'lazy'}
-                      />
-
-                      {/* Gradient Overlay for Text Readability */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0B1020]/95 via-[#0B1020]/35 to-black/30 pointer-events-none" />
-
-                      {/* Top Badge */}
-                      <div className="absolute top-3 left-3 z-10">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/65 backdrop-blur-md border border-white/15 text-[10px] font-mono font-semibold uppercase tracking-wider text-amber-300 shadow-sm">
-                          <Icon className="w-3 h-3 text-brand-orange" />
-                          <span>{item.badge}</span>
-                        </span>
-                      </div>
-
-                      {/* Laser scanning line on hover */}
-                      <div className="absolute inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-brand-orange to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-laser-scan pointer-events-none" />
-
-                      {/* Bottom Metadata */}
-                      <div className="absolute bottom-3 left-3 right-3 z-10 space-y-0.5">
-                        <h4 className="text-xs sm:text-sm font-bold text-white leading-tight truncate drop-shadow-sm group-hover:text-amber-200 transition-colors">
-                          {item.title}
-                        </h4>
-                        <p className="text-[10px] sm:text-[11px] text-slate-300 truncate font-light">
-                          {item.subtitle}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
+                {colOneCombined.map((item, index) =>
+                  renderSliderCard(item, `col1-${item.id}-${index}`)
+                )}
               </div>
             </div>
 
-            {/* ── Column 2: Vertical Slide Moving DOWNWARDS ── */}
+            {/* Column 2: Vertical Slide Moving DOWNWARDS */}
             <div className="relative overflow-hidden flex flex-col">
               <div className="marquee-track-down gap-4 sm:gap-5 flex flex-col">
-                {colTwoCombined.map((item, index) => {
-                  const Icon = item.icon;
-                  return (
-                    <div
-                      key={`col2-${item.id}-${index}`}
-                      onClick={() => onCardClick && onCardClick(mapBadgeToService(item.badge))}
-                      className="group relative w-full h-60 sm:h-64 md:h-72 rounded-2xl overflow-hidden shrink-0 border border-white/10 bg-[#0E1628] backdrop-blur-md shadow-xl transition-all duration-300 hover:border-brand-electric/60 hover:shadow-[0_16px_36px_rgba(52,120,246,0.3)] hover:scale-[1.02] cursor-pointer"
-                    >
-                      {/* Background Product Image */}
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
-                        loading={index < 4 ? 'eager' : 'lazy'}
-                      />
-
-                      {/* Gradient Overlay for Text Readability */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0B1020]/95 via-[#0B1020]/35 to-black/30 pointer-events-none" />
-
-                      {/* Top Badge */}
-                      <div className="absolute top-3 left-3 z-10">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/65 backdrop-blur-md border border-white/15 text-[10px] font-mono font-semibold uppercase tracking-wider text-cyan-300 shadow-sm">
-                          <Icon className="w-3 h-3 text-brand-electric" />
-                          <span>{item.badge}</span>
-                        </span>
-                      </div>
-
-                      {/* Laser scanning line on hover */}
-                      <div className="absolute inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-laser-scan pointer-events-none" />
-
-                      {/* Bottom Metadata */}
-                      <div className="absolute bottom-3 left-3 right-3 z-10 space-y-0.5">
-                        <h4 className="text-xs sm:text-sm font-bold text-white leading-tight truncate drop-shadow-sm group-hover:text-cyan-200 transition-colors">
-                          {item.title}
-                        </h4>
-                        <p className="text-[10px] sm:text-[11px] text-slate-300 truncate font-light">
-                          {item.subtitle}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
+                {colTwoCombined.map((item, index) =>
+                  renderSliderCard(item, `col2-${item.id}-${index}`)
+                )}
               </div>
             </div>
 
           </div>
         </div>
-      </div>
-
-      {/* Floating Interactive Hover Hint */}
-      <div className="mt-3 flex items-center justify-between px-2 text-[11px] font-mono text-slate-400">
-        <span className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse" />
-          <span>Vertical Showcase • Hover to pause</span>
-        </span>
-        <span className="hidden sm:inline-block text-slate-500">
-          Executive Gifting & Industrial Products
-        </span>
       </div>
     </div>
   );

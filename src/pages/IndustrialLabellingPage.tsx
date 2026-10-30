@@ -16,6 +16,7 @@ import {
 } from '../data/industrialLabellingData';
 import { IndustrialCategoryCard } from '../components/IndustrialCategoryCard';
 import { COMPANY_INFO } from '../data/companyData';
+import { RealisticDiya, HangingLantern, RangoliCornerPattern } from '../components/DiwaliFestiveDecor';
 
 interface IndustrialLabellingPageProps {
   onNavigate: (route: string) => void;
@@ -45,12 +46,10 @@ export const IndustrialLabellingPage: React.FC<IndustrialLabellingPageProps> = (
           background: 'radial-gradient(circle, rgba(52,120,246,0.12) 0%, transparent 70%)',
         }}
       />
-      <div
-        className="absolute top-1/2 right-10 w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(255,107,0,0.1) 0%, transparent 70%)',
-        }}
-      />
+      {/* Decorative Diwali Accents */}
+      <HangingLantern className="hidden md:block absolute top-20 left-4 z-10" />
+      <HangingLantern className="hidden md:block absolute top-20 right-4 z-10" />
+      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 right-0 z-0 rotate-90" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
@@ -89,9 +88,12 @@ export const IndustrialLabellingPage: React.FC<IndustrialLabellingPageProps> = (
             
             {/* Left Content Column */}
             <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-orange/15 border border-brand-orange/30 text-brand-orange text-xs font-mono font-bold uppercase tracking-wider">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>{INDUSTRIAL_LABELLING_HERO.sectionTitle}</span>
+              <div className="flex items-center gap-3">
+                <RealisticDiya size={30} className="shrink-0 -mt-1 hidden sm:inline-flex" />
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-orange/15 border border-brand-orange/30 text-brand-orange text-xs font-mono font-bold uppercase tracking-wider">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>{INDUSTRIAL_LABELLING_HERO.sectionTitle}</span>
+                </div>
               </div>
 
               <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.12]">

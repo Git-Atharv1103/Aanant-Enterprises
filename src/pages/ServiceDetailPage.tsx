@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ArrowLeft,
   Mail,
   Phone,
-  MapPin,
   Sparkles,
   ChevronRight,
-  Clock,
+  Gift,
+  CheckCircle2,
+  ZoomIn,
+  X,
+  MessageCircle,
 } from 'lucide-react';
 import { FLAGSHIP_SERVICES, COMPANY_INFO } from '../data/companyData';
+import { RealisticDiya, HangingLantern, RangoliCornerPattern } from '../components/DiwaliFestiveDecor';
 
 interface ServiceDetailPageProps {
   serviceId: string;
@@ -25,18 +29,36 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
 
   const otherServices = FLAGSHIP_SERVICES.filter((s) => s.id !== service.id);
 
+  const [activeModalImg, setActiveModalImg] = useState<string | null>(null);
+
+  const whatsappMessage = encodeURIComponent(
+    `Hello Aanant Enterprises, I would like to inquire about Diwali corporate gifting and services for ${service.title}.`
+  );
+  const whatsappUrl = `https://wa.me/${COMPANY_INFO.primaryWhatsApp}?text=${whatsappMessage}`;
+
   return (
-    <main className="bg-[#0B1020] text-white min-h-screen pt-28 pb-20 relative overflow-hidden">
-      {/* Background Ambience */}
+    <main className="bg-[#0B1020] text-white min-h-screen pt-28 pb-20 relative overflow-hidden select-none">
+      {/* Background Ambience with Diwali Warmth */}
       <div className="absolute inset-0 industrial-grid-dark opacity-30 pointer-events-none" />
       <div
-        className="absolute top-20 right-1/4 w-[500px] h-[500px] rounded-full pointer-events-none"
+        className="absolute top-20 right-1/4 w-[550px] h-[550px] rounded-full pointer-events-none"
         style={{
-          background: `radial-gradient(circle, ${service.accentColor}15 0%, transparent 70%)`,
+          background: `radial-gradient(circle, ${service.accentColor}20 0%, rgba(245, 158, 11, 0.08) 50%, transparent 70%)`,
+        }}
+      />
+      <div
+        className="absolute top-1/2 left-10 w-[450px] h-[450px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%)',
         }}
       />
 
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      {/* Decorative Hanging Lanterns */}
+      <HangingLantern className="hidden md:block absolute top-20 left-4 z-10" />
+      <HangingLantern className="hidden md:block absolute top-20 right-4 z-10" />
+      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 right-0 z-0 rotate-90" />
+
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
 
         {/* ── Breadcrumb & Back to Home ── */}
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5">
@@ -73,21 +95,25 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
           </button>
         </div>
 
-        {/* ── Service Header Banner ── */}
-        <div className="rounded-3xl border border-white/10 bg-[#0E1628]/80 backdrop-blur-xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">
+        {/* ── Service Header Banner (Diwali Festive Atmosphere) ── */}
+        <div className="rounded-3xl border border-amber-500/30 bg-[#0E1628]/90 backdrop-blur-xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">
           <div className="relative z-10 space-y-4 max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider border"
-              style={{
-                backgroundColor: `${service.accentColor}15`,
-                borderColor: `${service.accentColor}40`,
-                color: service.accentColor,
-              }}
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>{service.badge}</span>
+            <div className="flex items-center gap-3">
+              <RealisticDiya size={32} className="shrink-0 -mt-1 hidden sm:inline-flex" />
+              <div
+                className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider border shadow-sm"
+                style={{
+                  backgroundColor: `${service.accentColor}20`,
+                  borderColor: `${service.accentColor}50`,
+                  color: service.accentColor,
+                }}
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>{service.badge} • Diwali 2026 Collection</span>
+              </div>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
+            <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.12]">
               {service.title}
             </h1>
 
@@ -95,70 +121,136 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
               {service.description}
             </p>
 
-            <div className="pt-2 text-xs font-mono text-slate-400">
-              <strong className="text-slate-300">Image Direction:</strong> {service.imageDirection}
+            {/* Quick Festive CTAs */}
+            <div className="pt-3 flex flex-wrap items-center gap-3">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 transition-all flex items-center gap-2 shadow-lg shadow-emerald-900/30"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Order On WhatsApp</span>
+              </a>
+
+              <a
+                href={`mailto:${COMPANY_INFO.email}?subject=Inquiry%20-%20${encodeURIComponent(service.title)}`}
+                className="px-6 py-3 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-brand-orange to-amber-500 hover:from-brand-orange-hover hover:to-amber-600 transition-all flex items-center gap-2 shadow-glow-orange"
+              >
+                <Mail className="w-4 h-4" />
+                <span>Request Quotation</span>
+              </a>
+
+              <a
+                href={`tel:${COMPANY_INFO.phones[0].replace(/\s+/g, '')}`}
+                className="px-5 py-3 rounded-xl text-xs font-semibold text-slate-200 bg-white/5 hover:bg-white/10 border border-white/15 transition-all flex items-center gap-2"
+              >
+                <Phone className="w-4 h-4 text-brand-orange" />
+                <span>Call Workshop</span>
+              </a>
             </div>
           </div>
 
-          {/* Decorative Corner Glow */}
+          {/* Decorative Background Corner Glow */}
           <div
-            className="absolute top-0 right-0 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-20"
+            className="absolute top-0 right-0 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-25"
             style={{ backgroundColor: service.accentColor }}
           />
         </div>
 
-        {/* ── Placeholder Information Card (Phase 2 Ready) ── */}
-        <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8 space-y-4 backdrop-blur-md">
+        {/* ── Diwali 2026 Special Highlight Panel ── */}
+        <div className="rounded-2xl border border-amber-500/30 bg-gradient-to-br from-amber-500/10 via-[#0E1628]/80 to-brand-orange/10 p-6 sm:p-8 space-y-4 backdrop-blur-md">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-300 shrink-0">
-              <Clock className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-300 shrink-0">
+              <Gift className="w-5 h-5 text-amber-400" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-white">
-                Detailed Catalogue In Preparation (Phase 2)
+              <h3 className="text-base sm:text-lg font-bold text-white">
+                Festive Season Gifting & Manufacturing Suite
               </h3>
-              <p className="text-xs text-amber-200/80 mt-0.5">
-                Placeholder structure ready for future expansion.
+              <p className="text-xs text-amber-200/90 mt-0.5">
+                Bulk corporate orders • Custom client logo laser engraving • Timely festive dispatch across India
               </p>
             </div>
           </div>
 
-          <p className="text-sm text-slate-300 leading-relaxed font-light">
-            This dedicated service page structure is now established. In the upcoming phase,
-            we will incorporate the complete product specifications, dimensional tolerances,
-            material selections, and specialized inquiry flows for <strong>{service.title}</strong>.
-          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
+              <div className="flex items-center gap-2 text-xs font-bold text-amber-300">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Bespoke Logo Marking</span>
+              </div>
+              <p className="text-[11px] text-slate-300 font-light">
+                Sharp fiber laser engraving and UV multi-color branding with client vector graphics.
+              </p>
+            </div>
 
-          <div className="pt-2 flex flex-wrap items-center gap-3">
-            <span className="text-xs font-mono text-slate-400">Available Machines:</span>
-            <span className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">
-              CO2 Laser Machine
-            </span>
-            <span className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">
-              Fiber Laser Engraving Machine
-            </span>
+            <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
+              <div className="flex items-center gap-2 text-xs font-bold text-amber-300">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Executive Packaging</span>
+              </div>
+              <p className="text-[11px] text-slate-300 font-light">
+                Premium gift box packaging with custom greeting cards and ribbon presentation.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
+              <div className="flex items-center gap-2 text-xs font-bold text-amber-300">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Pan-India Logistics</span>
+              </div>
+              <p className="text-[11px] text-slate-300 font-light">
+                Guaranteed safe batch delivery to single or multiple corporate branch locations.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* ── Sample Visual Gallery Strip ── */}
+        {/* ── Product & Visual Specimen Gallery (Properly Fitted, No Cropping) ── */}
         <div className="space-y-4">
-          <div className="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">
-            Visual Craftsmanship Examples
+          <div className="flex items-center justify-between">
+            <div className="text-xs font-mono uppercase tracking-wider text-slate-300 font-bold flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-brand-orange" />
+              <span>Specimen Gallery & Product Details</span>
+            </div>
+            <span className="text-xs font-mono text-slate-400">Click specimen to view high-res</span>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {service.images.map((img, i) => (
               <div
                 key={i}
-                className="relative rounded-2xl overflow-hidden border border-white/10 h-48 group shadow-lg"
+                onClick={() => setActiveModalImg(img)}
+                className="group relative rounded-2xl overflow-hidden border border-white/10 bg-[#0E1628] h-64 flex flex-col justify-between shadow-xl hover:border-amber-500/50 hover:shadow-2xl transition-all duration-300 cursor-pointer"
               >
-                <img
-                  src={img}
-                  alt={`${service.title} sample ${i + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
-                  <span className="text-[11px] font-mono text-slate-300">
-                    Sample {i + 1} • {service.title}
+                {/* Visual container with object-contain */}
+                <div className="relative w-full h-48 bg-gradient-to-br from-[#070B16] to-[#121A2D] flex items-center justify-center p-3 border-b border-white/5">
+                  <img
+                    src={img}
+                    alt={`${service.title} specimen ${i + 1}`}
+                    className="max-h-full max-w-full object-contain filter drop-shadow-[0_6px_14px_rgba(0,0,0,0.6)] transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+
+                  {/* Zoom Overlay on hover */}
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="w-9 h-9 rounded-full bg-brand-orange text-white flex items-center justify-center shadow-lg">
+                      <ZoomIn className="w-4 h-4" />
+                    </div>
+                  </div>
+
+                  <span className="absolute top-2.5 left-2.5 font-mono text-[10px] text-white/70 bg-black/60 px-2 py-0.5 rounded border border-white/10">
+                    #{i + 1}
+                  </span>
+                </div>
+
+                <div className="p-3 bg-[#0B1020]/90 flex items-center justify-between text-xs">
+                  <span className="font-bold text-white group-hover:text-amber-200 transition-colors truncate">
+                    {service.title} Model #{i + 1}
+                  </span>
+                  <span className="text-[10px] font-mono text-brand-orange shrink-0">
+                    Inspect
                   </span>
                 </div>
               </div>
@@ -166,75 +258,18 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
           </div>
         </div>
 
-        {/* ── Direct Contact & Inquiry Panel ── */}
-        <div className="rounded-3xl border border-white/10 bg-[#0E1628]/60 p-6 sm:p-8 backdrop-blur-md space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <div className="text-xs font-mono text-brand-orange uppercase tracking-wider font-bold">
-                Direct Pune Workshop Contact
-              </div>
-              <h3 className="text-xl font-bold text-white mt-1">
-                Have a requirement for {service.title}?
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 mt-1">
-                Reach out directly to discuss your custom project dimensions and artwork.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <a
-                href={`mailto:${COMPANY_INFO.email}`}
-                className="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-brand-orange to-amber-500 hover:from-brand-orange-hover hover:to-amber-600 transition-all flex items-center gap-2 shadow-glow-orange"
-              >
-                <Mail className="w-3.5 h-3.5" />
-                <span>Email Us</span>
-              </a>
-              <a
-                href={`tel:${COMPANY_INFO.phones[0].replace(/\s+/g, '')}`}
-                className="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-white/10 hover:bg-white/20 border border-white/15 transition-all flex items-center gap-2"
-              >
-                <Phone className="w-3.5 h-3.5 text-brand-orange" />
-                <span>Call Workshop</span>
-              </a>
-            </div>
+        {/* ── Switcher: Explore Other Core Services ── */}
+        <section className="space-y-4 pt-6 border-t border-white/10">
+          <div className="flex items-center justify-between">
+            <h3 className="text-lg font-bold text-white">
+              Explore Other Core Services
+            </h3>
+            <span className="text-xs font-mono text-slate-400">
+              {otherServices.length} Services Available
+            </span>
           </div>
 
-          {/* Contact Details Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-white/10 text-xs">
-            <div className="flex items-start gap-2.5 text-slate-300">
-              <Mail className="w-4 h-4 text-brand-orange shrink-0 mt-0.5" />
-              <div>
-                <div className="text-[10px] font-mono text-slate-500 uppercase">Email</div>
-                <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-white font-mono">
-                  {COMPANY_INFO.email}
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-2.5 text-slate-300">
-              <Phone className="w-4 h-4 text-brand-orange shrink-0 mt-0.5" />
-              <div>
-                <div className="text-[10px] font-mono text-slate-500 uppercase">Phones</div>
-                <div className="font-mono">{COMPANY_INFO.phones.join(' / ')}</div>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-2.5 text-slate-300">
-              <MapPin className="w-4 h-4 text-brand-orange shrink-0 mt-0.5" />
-              <div>
-                <div className="text-[10px] font-mono text-slate-500 uppercase">Workshop Location</div>
-                <div>Nanded Phata, Pune, Maharashtra</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Other Services Navigation ── */}
-        <div className="space-y-4 pt-6 border-t border-white/10">
-          <div className="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">
-            Explore Other Services
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {otherServices.map((other) => (
               <button
                 key={other.id}
@@ -242,23 +277,60 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                   onNavigate(other.route);
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-brand-orange/40 text-left transition-all group"
+                className="p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-amber-500/40 transition-all text-left group"
               >
-                <div className="text-[11px] font-mono text-brand-orange font-bold uppercase">
+                <div className="text-[10px] font-mono font-bold text-brand-orange uppercase">
                   {other.badge}
                 </div>
-                <div className="text-sm font-bold text-white mt-1 group-hover:text-amber-200 transition-colors">
+                <div className="text-sm font-bold text-white group-hover:text-amber-300 transition-colors mt-0.5">
                   {other.title}
                 </div>
-                <p className="text-xs text-slate-400 mt-1 line-clamp-2">
+                <div className="text-[11px] text-slate-400 line-clamp-1 mt-1 font-light">
                   {other.shortDescription}
-                </p>
+                </div>
               </button>
             ))}
           </div>
-        </div>
+        </section>
 
       </div>
+
+      {/* ── Lightbox Modal for High-Resolution View ── */}
+      {activeModalImg && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-xl p-4 sm:p-6"
+          onClick={() => setActiveModalImg(null)}
+        >
+          <div
+            className="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="w-full flex items-center justify-between pb-3 text-white">
+              <span className="text-xs font-mono text-amber-300 uppercase font-bold">
+                {service.title} • High-Resolution Specimen Preview
+              </span>
+              <button
+                type="button"
+                onClick={() => setActiveModalImg(null)}
+                aria-label="Close Preview"
+                className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center border border-white/15"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="relative w-full h-[65vh] sm:h-[75vh] flex items-center justify-center rounded-2xl bg-[#090E1A] border border-white/15 overflow-hidden p-6">
+              <img
+                src={activeModalImg}
+                alt={service.title}
+                className="max-h-full max-w-full object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.85)]"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 };

@@ -22,6 +22,7 @@ import {
   type IndustrialLabellingCategory,
 } from '../data/industrialLabellingData';
 import { COMPANY_INFO } from '../data/companyData';
+import { RealisticDiya, HangingLantern, RangoliCornerPattern } from '../components/DiwaliFestiveDecor';
 
 interface IndustrialCategoryDetailPageProps {
   categorySlug: string;
@@ -81,6 +82,11 @@ export const IndustrialCategoryDetailPage: React.FC<IndustrialCategoryDetailPage
         }}
       />
 
+      {/* Festive Diwali Elements */}
+      <HangingLantern className="hidden md:block absolute top-20 left-4 z-10" />
+      <HangingLantern className="hidden md:block absolute top-20 right-4 z-10" />
+      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 right-0 z-0 rotate-90" />
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
 
         {/* ── Breadcrumb Navigation ── */}
@@ -115,16 +121,19 @@ export const IndustrialCategoryDetailPage: React.FC<IndustrialCategoryDetailPage
         {/* ── Header Banner for the Category ── */}
         <div className="rounded-3xl border border-white/10 bg-[#0E1628]/85 backdrop-blur-xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">
           <div className="relative z-10 space-y-5 max-w-3xl">
-            <div
-              className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider border"
-              style={{
-                backgroundColor: `${activeCategory.accentColor}15`,
-                borderColor: `${activeCategory.accentColor}40`,
-                color: activeCategory.accentColor,
-              }}
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>{activeCategory.badge}</span>
+            <div className="flex items-center gap-3">
+              <RealisticDiya size={30} className="shrink-0 -mt-1 hidden sm:inline-flex" />
+              <div
+                className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider border shadow-sm"
+                style={{
+                  backgroundColor: `${activeCategory.accentColor}15`,
+                  borderColor: `${activeCategory.accentColor}40`,
+                  color: activeCategory.accentColor,
+                }}
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>{activeCategory.badge}</span>
+              </div>
             </div>
 
             <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.15]">

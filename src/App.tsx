@@ -9,6 +9,7 @@ import { ServiceDetailPage } from './pages/ServiceDetailPage';
 import { PlaceholderPage } from './pages/PlaceholderPage';
 import { IndustrialLabellingPage } from './pages/IndustrialLabellingPage';
 import { IndustrialCategoryDetailPage } from './pages/IndustrialCategoryDetailPage';
+import { DiwaliTopBanner } from './components/DiwaliFestiveDecor';
 
 export function App() {
   const normalizeRoute = (raw: string): string => {
@@ -149,6 +150,11 @@ export function App() {
         currentPage={currentPage}
         onNavigate={handleNavigate}
       />
+
+      {/* Global Diwali 2026 Festive Banner Across All Pages */}
+      <div className="pt-16 sm:pt-20">
+        <DiwaliTopBanner onExploreDiwaliGifts={() => handleNavigate('service-corporate-gifting')} />
+      </div>
 
       {/* Main Page Area */}
       <div className="flex-1 pb-16 md:pb-0">
