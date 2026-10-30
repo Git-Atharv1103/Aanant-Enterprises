@@ -12,6 +12,10 @@ import { IndustrialCategoryDetailPage } from './pages/IndustrialCategoryDetailPa
 import { CorporateGiftingPage } from './pages/CorporateGiftingPage';
 import { CorporateGiftingCategoryDetailPage } from './pages/CorporateGiftingCategoryDetailPage';
 import { DiwaliTopBanner } from './components/DiwaliFestiveDecor';
+import {
+  DiwaliBackgroundDecor,
+  DiwaliFairyStringLights,
+} from './components/DiwaliBackgroundDecor';
 
 export function App() {
   const normalizeRoute = (raw: string): string => {
@@ -185,25 +189,31 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#0B1020] text-slate-100 selection:bg-brand-orange selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#0B1020] text-slate-100 selection:bg-brand-orange selection:text-white relative">
+      {/* ── Global Diwali Festive Background Lighting, Aura Rays & Sparkles ── */}
+      <DiwaliBackgroundDecor />
+
       {/* Top Sticky Header */}
       <Header
         currentPage={currentPage}
         onNavigate={handleNavigate}
       />
 
-      {/* Global Diwali 2026 Festive Banner Across All Pages */}
-      <div className="pt-16 sm:pt-20">
+      {/* Global Diwali 2026 Festive Banner Across All Pages with Fairy String Lights */}
+      <div className="pt-16 sm:pt-20 relative z-20">
+        <DiwaliFairyStringLights />
         <DiwaliTopBanner onExploreDiwaliGifts={() => handleNavigate('service-corporate-gifting')} />
       </div>
 
       {/* Main Page Area */}
-      <div className="flex-1 pb-16 md:pb-0">
+      <div className="flex-1 pb-16 md:pb-0 relative z-10">
         {renderCurrentPage()}
       </div>
 
       {/* Footer */}
-      <Footer onNavigate={handleNavigate} />
+      <div className="relative z-10">
+        <Footer onNavigate={handleNavigate} />
+      </div>
 
       {/* Floating Utilities */}
       <WhatsAppButton />

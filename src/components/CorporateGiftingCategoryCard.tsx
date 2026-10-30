@@ -228,3 +228,4 @@ export const CorporateGiftingCategoryCard: React.FC<CorporateGiftingCategoryCard
     </div>
   );
 };
+

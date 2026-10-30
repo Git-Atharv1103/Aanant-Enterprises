@@ -73,24 +73,31 @@ export const CorporateGiftingCategoryDetailPage: React.FC<
       className="bg-[#0B1020] text-white min-h-screen pt-28 pb-20 relative overflow-hidden select-none"
       role="main"
     >
-      {/* ── Background Diwali Ambience ── */}
+      {/* ── Background Diwali Ambience & Radiant Lighting ── */}
       <div className="absolute inset-0 industrial-grid-dark opacity-30 pointer-events-none" />
       <div
-        className="absolute top-24 right-1/4 w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="absolute -top-10 left-1/2 -translate-x-1/2 w-[850px] h-[350px] pointer-events-none opacity-40"
         style={{
-          background: `radial-gradient(circle, ${category.accentColor}18 0%, rgba(245, 158, 11, 0.08) 50%, transparent 70%)`,
+          background: 'radial-gradient(ellipse at 50% 0%, rgba(251, 191, 36, 0.35) 0%, rgba(245, 158, 11, 0.16) 50%, transparent 80%)',
         }}
       />
       <div
-        className="absolute top-1/2 left-10 w-[450px] h-[450px] rounded-full pointer-events-none"
+        className="absolute top-24 right-1/4 w-[650px] h-[650px] rounded-full pointer-events-none opacity-40"
         style={{
-          background: 'radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%)',
+          background: `radial-gradient(circle, ${category.accentColor}25 0%, rgba(245, 158, 11, 0.15) 50%, transparent 70%)`,
+        }}
+      />
+      <div
+        className="absolute top-1/2 left-10 w-[550px] h-[550px] rounded-full pointer-events-none opacity-35"
+        style={{
+          background: 'radial-gradient(circle, rgba(251, 191, 36, 0.22) 0%, rgba(255, 107, 0, 0.1) 45%, transparent 70%)',
         }}
       />
 
       <HangingLantern className="hidden md:block absolute top-20 left-4 z-10" />
       <HangingLantern className="hidden md:block absolute top-20 right-4 z-10" />
-      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 right-0 z-0 rotate-90" />
+      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 right-0 z-0 rotate-90 opacity-40" />
+      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 left-0 z-0 opacity-40" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
 
@@ -414,3 +421,4 @@ export const CorporateGiftingCategoryDetailPage: React.FC<
     </main>
   );
 };
+

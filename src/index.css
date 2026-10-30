@@ -670,6 +670,70 @@
   animation: lanternSwing 6s ease-in-out infinite;
 }
 
+@keyframes festiveTwinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.animate-festive-twinkle {
+  animation: festiveTwinkle 3s ease-in-out infinite;
+}
+
+@keyframes festiveFloat {
+  0% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-40px) translateX(-5px);
+    opacity: 0.2;
+  }
+}
+
+.animate-festive-float {
+  animation: festiveFloat 6s ease-in-out infinite;
+}
+
+@keyframes stringLightGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px #F59E0B) drop-shadow(0 0 12px #D97706);
+    opacity: 0.9;
+  }
+  50% {
+    filter: drop-shadow(0 0 10px #FDE047) drop-shadow(0 0 22px #F59E0B);
+    opacity: 1;
+  }
+}
+
+.animate-string-light {
+  animation: stringLightGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes ambientAuraPulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.08);
+  }
+}
+
+.animate-aura-pulse {
+  animation: ambientAuraPulse 5s ease-in-out infinite;
+}
+
 /* Horizontal Continuous Smooth Infinite Slider */
 @keyframes marqueeHorizontal {
   0% {

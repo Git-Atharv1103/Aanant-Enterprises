@@ -19,18 +19,24 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onNavigate }) 
       className="py-12 lg:py-16 bg-[#0B1020] text-white relative overflow-hidden border-t border-white/10"
       aria-label="Aanant Enterprises Our Services"
     >
-      {/* Background Decorative Patterns with Diwali Golden Warmth */}
+      {/* Background Decorative Patterns with Radiant Diwali Golden Warmth & Lighting */}
       <div className="absolute inset-0 industrial-grid-dark opacity-25 pointer-events-none" />
       <div
-        className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="absolute top-0 inset-x-0 h-40 pointer-events-none opacity-40"
         style={{
-          background: 'radial-gradient(circle, rgba(52,120,246,0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at 50% 0%, rgba(251, 191, 36, 0.3) 0%, rgba(245, 158, 11, 0.15) 50%, transparent 80%)',
         }}
       />
       <div
-        className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none opacity-40"
         style={{
-          background: 'radial-gradient(circle, rgba(245,158,11,0.09) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, rgba(245, 158, 11, 0.08) 50%, transparent 70%)',
+        }}
+      />
+      <div
+        className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none opacity-40"
+        style={{
+          background: 'radial-gradient(circle, rgba(255, 107, 0, 0.22) 0%, rgba(245, 158, 11, 0.1) 40%, transparent 70%)',
         }}
       />
 

@@ -362,3 +362,4 @@ export function getCorporateGiftingCategoryBySlug(slug: string): CorporateGiftin
     (c) => c.slug === clean || c.id === clean || c.route.endsWith(clean)
   );
 }
+

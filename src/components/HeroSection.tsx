@@ -48,25 +48,31 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
       <div className="absolute inset-0 industrial-grid-dark opacity-35 pointer-events-none" />
       <div className="hero-noise opacity-20 pointer-events-none" />
 
-      {/* Ambient Radial Lighting Glows */}
+      {/* Ambient Diwali Radial Golden Lighting Glows & Rays */}
       <div
-        className="absolute top-1/4 -left-20 w-[550px] h-[550px] rounded-full pointer-events-none"
+        className="absolute -top-10 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none opacity-50"
         style={{
-          background: 'radial-gradient(circle, rgba(52,120,246,0.12) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at 50% 0%, rgba(251, 191, 36, 0.35) 0%, rgba(245, 158, 11, 0.18) 50%, transparent 80%)',
         }}
       />
       <div
-        className="absolute top-1/3 -right-20 w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="absolute top-1/4 -left-20 w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(255,107,0,0.14) 0%, rgba(245,158,11,0.06) 40%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(251, 191, 36, 0.22) 0%, rgba(245, 158, 11, 0.1) 45%, transparent 70%)',
+        }}
+      />
+      <div
+        className="absolute top-1/3 -right-20 w-[650px] h-[650px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, rgba(255, 107, 0, 0.24) 0%, rgba(245, 158, 11, 0.12) 40%, transparent 70%)',
         }}
       />
 
       {/* Diwali Festive Decorative Elements */}
       <HangingLantern className="hidden md:block absolute top-0 left-6 z-10" />
       <HangingLantern className="hidden md:block absolute top-0 right-8 z-10" />
-      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 -left-6 z-0" />
-      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 -right-6 z-0 rotate-90" />
+      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 -left-6 z-0 opacity-40" />
+      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 -right-6 z-0 rotate-90 opacity-40" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Spacious Two-Column Layout: Left (42-45%) | Right (55-58%) */}
