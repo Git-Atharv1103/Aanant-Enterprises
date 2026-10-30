@@ -190,8 +190,8 @@ export function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#0B1020] text-slate-100 selection:bg-brand-orange selection:text-white relative">
-      {/* ── Global Diwali Festive Background Lighting, Aura Rays & Sparkles ── */}
-      <DiwaliBackgroundDecor />
+      {/* ── Global Diwali Festive Background Lighting, Aura Rays, Sparkles & Live Cracker Blast ── */}
+      <DiwaliBackgroundDecor currentPage={currentPage} />
 
       {/* Top Sticky Header */}
       <Header
