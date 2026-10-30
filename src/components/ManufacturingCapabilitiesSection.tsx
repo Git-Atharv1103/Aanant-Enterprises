@@ -15,7 +15,7 @@ export const ManufacturingCapabilitiesSection: React.FC<ManufacturingCapabilitie
   const cardsReveal = useScrollReveal<HTMLDivElement>();
 
   return (
-    <section className="py-24 bg-gradient-to-b from-[#0a0f1d] via-[#070b14] to-[#0a0f1d] text-white relative overflow-hidden border-t border-white/10">
+    <section className="py-10 sm:py-12 lg:py-14 bg-gradient-to-b from-[#0a0f1d] via-[#070b14] to-[#0a0f1d] text-white relative overflow-hidden border-t border-white/10">
       {/* Industrial Grid & Ambient Light Orbs */}
       <div className="absolute inset-0 industrial-grid-dark opacity-30 pointer-events-none" />
       <div className="absolute top-1/4 -left-48 w-96 h-96 bg-brand-blue-electric/15 rounded-full blur-[140px] pointer-events-none" />
@@ -26,7 +26,7 @@ export const ManufacturingCapabilitiesSection: React.FC<ManufacturingCapabilitie
         {/* Section Header */}
         <div
           ref={headerReveal.ref}
-          className={`max-w-3xl mx-auto text-center space-y-4 mb-16 transition-all duration-700 ${
+          className={`max-w-3xl mx-auto text-center space-y-4 mb-8 sm:mb-10 transition-all duration-700 ${
             headerReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >

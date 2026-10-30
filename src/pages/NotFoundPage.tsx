@@ -7,7 +7,7 @@ interface NotFoundPageProps {
 
 export const NotFoundPage: React.FC<NotFoundPageProps> = ({ onNavigate }) => {
   return (
-    <div className="pt-36 pb-24 bg-gradient-to-b from-[#090d16] via-[#0d1322] to-[#070a10] min-h-[80vh] flex items-center justify-center text-slate-100">
+    <div className="pt-10 pb-16 bg-gradient-to-b from-[#090d16] via-[#0d1322] to-[#070a10] min-h-[70vh] flex items-center justify-center text-slate-100">
       <div className="max-w-md mx-auto px-4 text-center space-y-6">
         <div className="w-24 h-24 rounded-3xl bg-brand-orange/15 text-brand-orange flex items-center justify-center mx-auto border border-brand-orange/30 shadow-glow-orange/20">
           <span className="text-4xl font-mono font-black tracking-wider">404</span>

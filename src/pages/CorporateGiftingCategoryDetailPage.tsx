@@ -77,7 +77,7 @@ export const CorporateGiftingCategoryDetailPage: React.FC<
 
   return (
     <main
-      className="bg-transparent text-white min-h-screen pt-20 sm:pt-24 pb-16 relative overflow-hidden select-none"
+      className="bg-transparent text-white min-h-screen pt-6 sm:pt-8 pb-12 relative overflow-hidden select-none"
       role="main"
     >
       {/* ── Background Diwali Ambience & Radiant Lighting ── */}

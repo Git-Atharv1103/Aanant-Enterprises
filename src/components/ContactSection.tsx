@@ -16,7 +16,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   isStandalonePage = false
 }) => {
   return (
-    <section className={`py-12 sm:py-16 bg-gradient-to-b from-[#090d16]/70 via-[#0d1322]/50 to-[#070a10]/70 text-slate-100 border-t border-white/10 relative overflow-hidden ${isStandalonePage ? 'pt-24 sm:pt-28' : ''}`} id="contact-section">
+    <section className={`py-8 sm:py-10 lg:py-12 bg-gradient-to-b from-[#090d16]/70 via-[#0d1322]/50 to-[#070a10]/70 text-slate-100 border-t border-white/10 relative overflow-hidden ${isStandalonePage ? 'pt-8 sm:pt-10' : ''}`} id="contact-section">
       <div className="absolute inset-0 industrial-grid-dark opacity-35 pointer-events-none" />
       <RangoliCornerPattern className="hidden lg:block absolute bottom-0 left-0 z-0" />
 

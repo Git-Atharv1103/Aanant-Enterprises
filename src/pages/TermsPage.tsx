@@ -8,7 +8,7 @@ interface TermsPageProps {
 
 export const TermsPage: React.FC<TermsPageProps> = ({ onNavigate }) => {
   return (
-    <div className="pt-28 pb-24 bg-gradient-to-b from-[#090d16] via-[#0d1322] to-[#070a10] min-h-screen text-slate-100">
+    <div className="pt-6 sm:pt-8 pb-12 bg-gradient-to-b from-[#090d16] via-[#0d1322] to-[#070a10] min-h-screen text-slate-100">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Back Link */}
@@ -17,14 +17,14 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onNavigate }) => {
             onNavigate('home');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="inline-flex items-center gap-2 text-xs font-mono font-bold text-brand-orange hover:text-amber-300 transition-colors mb-8 px-4 py-2 rounded-xl bg-white/5 border border-white/10"
+          className="inline-flex items-center gap-2 text-xs font-mono font-bold text-brand-orange hover:text-amber-300 transition-colors mb-4 px-4 py-2 rounded-xl bg-white/5 border border-white/10"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Home</span>
         </button>
 
         {/* Page Title Card */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-white/[0.04] border border-white/10 backdrop-blur-xl shadow-2xl mb-10 space-y-3">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white/[0.04] border border-white/10 backdrop-blur-xl shadow-2xl mb-6 space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-orange/20 border border-brand-orange/30 text-brand-orange text-xs font-mono font-bold uppercase tracking-wider">
             <FileText className="w-3.5 h-3.5" />
             <span>Commercial Terms & Policies</span>

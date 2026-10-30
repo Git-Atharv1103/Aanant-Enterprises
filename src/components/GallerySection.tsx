@@ -52,14 +52,14 @@ export const GallerySection: React.FC<GallerySectionProps> = ({
       : null;
 
   return (
-    <section className="py-24 bg-gradient-to-b from-[#0B1020] via-[#0E1628] to-[#0B1020] text-slate-100 border-y border-white/10 relative overflow-hidden">
+    <section className="py-10 sm:py-12 lg:py-14 bg-gradient-to-b from-[#0B1020] via-[#0E1628] to-[#0B1020] text-slate-100 border-y border-white/10 relative overflow-hidden">
       <div className="absolute inset-0 industrial-grid-dark opacity-30 pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         {showTitle && (
-          <div className="max-w-3xl mx-auto text-center space-y-4 mb-14">
+          <div className="max-w-3xl mx-auto text-center space-y-4 mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-orange/20 border border-brand-orange/30 text-brand-orange text-xs font-mono font-bold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Real Production Portfolio</span>

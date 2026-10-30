@@ -72,7 +72,7 @@ export const IndustrialCategoryDetailPage: React.FC<IndustrialCategoryDetailPage
   const whatsappUrl = `https://wa.me/${COMPANY_INFO.primaryWhatsApp}?text=${whatsappMessage}`;
 
   return (
-    <main className="bg-transparent text-white min-h-screen pt-28 pb-24 relative overflow-hidden" role="main">
+    <main className="bg-transparent text-white min-h-screen pt-6 sm:pt-8 pb-12 relative overflow-hidden" role="main">
       {/* Background Ambience */}
       <div className="absolute inset-0 industrial-grid-dark opacity-30 pointer-events-none" />
       <div
@@ -87,10 +87,10 @@ export const IndustrialCategoryDetailPage: React.FC<IndustrialCategoryDetailPage
       <HangingLantern className="hidden md:block absolute top-20 right-4 z-10" />
       <RangoliCornerPattern className="hidden lg:block absolute bottom-0 right-0 z-0 rotate-90" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-7">
 
         {/* ── Breadcrumb Navigation ── */}
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-3">
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-mono text-slate-400">
             <button
               onClick={() => onNavigate('home')}

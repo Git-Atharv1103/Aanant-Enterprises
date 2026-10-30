@@ -10,10 +10,10 @@ interface QuotePageProps {
 
 export const QuotePage: React.FC<QuotePageProps> = ({ initialProduct }) => {
   return (
-    <div className="pt-24 pb-20 bg-white min-h-screen text-brand-text">
+    <div className="pt-4 sm:pt-6 pb-12 bg-white min-h-screen text-brand-text">
       
       {/* Page Header */}
-      <div className="bg-brand-navy-deep text-white py-16 border-b border-white/10 relative overflow-hidden">
+      <div className="bg-brand-navy-deep text-white py-8 sm:py-12 border-b border-white/10 relative overflow-hidden">
         <div className="absolute inset-0 industrial-grid-dark opacity-30 pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-brand-orange/20 border border-brand-orange/30 text-brand-orange text-xs font-bold uppercase tracking-wider">
@@ -28,7 +28,7 @@ export const QuotePage: React.FC<QuotePageProps> = ({ initialProduct }) => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
           {/* Left Column: RFQ Form (8 cols) */}

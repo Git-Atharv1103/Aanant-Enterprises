@@ -10,10 +10,10 @@ export const CapabilitiesPage: React.FC<CapabilitiesPageProps> = ({ onNavigate }
   const { cnc, laser } = CAPABILITIES_DATA;
 
   return (
-    <div className="pt-24 pb-24 bg-gradient-to-b from-[#090d16] via-[#0d1322] to-[#070a10] min-h-screen text-slate-100">
+    <div className="pt-4 sm:pt-6 pb-12 bg-gradient-to-b from-[#090d16] via-[#0d1322] to-[#070a10] min-h-screen text-slate-100">
       
       {/* Page Header */}
-      <div className="relative py-20 border-b border-white/10 overflow-hidden">
+      <div className="relative py-8 sm:py-12 border-b border-white/10 overflow-hidden">
         <div className="absolute inset-0 industrial-grid-dark opacity-35 pointer-events-none" />
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-brand-orange/15 rounded-full blur-3xl pointer-events-none" />
 
@@ -31,7 +31,7 @@ export const CapabilitiesPage: React.FC<CapabilitiesPageProps> = ({ onNavigate }
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
         
         {/* Engineering Scope Notice Banner */}
         <div className="p-6 rounded-3xl bg-white/[0.04] border border-brand-blue-electric/30 backdrop-blur-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 text-slate-200">

@@ -10,7 +10,7 @@ interface PlaceholderPageProps {
 
 export const PlaceholderPage: React.FC<PlaceholderPageProps> = ({ title, onNavigate }) => {
   return (
-    <main className="bg-[#0B1020] text-white min-h-[85vh] pt-28 pb-20 relative overflow-hidden flex items-center">
+    <main className="bg-[#0B1020] text-white min-h-[75vh] pt-8 sm:pt-10 pb-12 relative overflow-hidden flex items-center">
       {/* Background Ambience */}
       <div className="absolute inset-0 industrial-grid-dark opacity-30 pointer-events-none" />
       <RangoliCornerPattern className="hidden lg:block absolute bottom-0 right-0 z-0 rotate-90" />

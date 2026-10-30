@@ -8,7 +8,7 @@ interface BusinessEnquiryCTAProps {
 
 export const BusinessEnquiryCTA: React.FC<BusinessEnquiryCTAProps> = ({ onNavigate }) => {
   return (
-    <section className="py-20 relative overflow-hidden bg-gradient-to-br from-[#0a0f1d] via-[#10182b] to-[#080c18] text-white border-y border-white/10">
+    <section className="py-10 sm:py-12 relative overflow-hidden bg-gradient-to-br from-[#0a0f1d] via-[#10182b] to-[#080c18] text-white border-y border-white/10">
       
       {/* Precision Industrial Ambient Grid and Glows */}
       <div className="absolute inset-0 industrial-grid-dark opacity-35 pointer-events-none" />
@@ -16,7 +16,7 @@ export const BusinessEnquiryCTA: React.FC<BusinessEnquiryCTAProps> = ({ onNaviga
       <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-brand-blue-electric/15 blur-[120px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="p-8 sm:p-14 rounded-3xl bg-white/[0.03] backdrop-blur-xl border border-white/15 shadow-2xl relative overflow-hidden">
+        <div className="p-6 sm:p-10 rounded-3xl bg-white/[0.03] backdrop-blur-xl border border-white/15 shadow-2xl relative overflow-hidden">
           
           {/* Subtle Laser Line sweep accent at top */}
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-brand-orange to-transparent opacity-80" />

@@ -37,7 +37,7 @@ export const WhyChooseUs: React.FC = () => {
     <section
       ref={sectionRef}
       id="why-choose-us"
-      className="py-12 lg:py-16 relative overflow-hidden bg-gradient-to-b from-[#0B1020]/60 via-[#0E1628]/50 to-[#0B1020]/60 text-slate-100 border-t border-white/10"
+      className="py-8 sm:py-10 lg:py-12 relative overflow-hidden bg-gradient-to-b from-[#0B1020]/60 via-[#0E1628]/50 to-[#0B1020]/60 text-slate-100 border-t border-white/10"
     >
       {/* Decorative Grids and Light Orbs */}
       <div className="absolute inset-0 industrial-grid-dark opacity-35 pointer-events-none" />
@@ -45,7 +45,7 @@ export const WhyChooseUs: React.FC = () => {
       <div className="absolute bottom-10 -left-32 w-80 h-80 bg-brand-orange/15 rounded-full blur-3xl pointer-events-none" />
       <RangoliCornerPattern className="hidden lg:block absolute bottom-0 right-0 z-0 opacity-40 rotate-180" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
 
         {/* Section Header */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-end">

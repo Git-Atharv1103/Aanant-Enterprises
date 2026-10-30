@@ -47,7 +47,7 @@ export const CustomerReviewsSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="reviews"
-      className="py-24 lg:py-32 relative overflow-hidden bg-gradient-to-b from-[#0B1020] via-[#0E1628] to-[#0B1020] text-slate-100 border-t border-white/10"
+      className="py-10 sm:py-12 lg:py-14 relative overflow-hidden bg-gradient-to-b from-[#0B1020] via-[#0E1628] to-[#0B1020] text-slate-100 border-t border-white/10"
     >
       {/* Background */}
       <div className="absolute inset-0 industrial-grid-dark opacity-25 pointer-events-none" />

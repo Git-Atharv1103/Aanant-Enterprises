@@ -59,12 +59,12 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   };
 
   return (
-    <div className="pt-24 pb-24 bg-gradient-to-b from-[#090d16] via-[#0d1322] to-[#070a10] min-h-screen text-slate-100">
+    <div className="pt-4 sm:pt-6 pb-12 bg-gradient-to-b from-[#090d16] via-[#0d1322] to-[#070a10] min-h-screen text-slate-100">
       
       {/* Editorial High-Tech Page Header */}
       <div
         ref={headerReveal.ref}
-        className={`relative py-16 sm:py-24 border-b border-white/10 overflow-hidden transition-all duration-700 ${
+        className={`relative py-8 sm:py-12 border-b border-white/10 overflow-hidden transition-all duration-700 ${
           headerReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}
       >
@@ -109,12 +109,12 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
         
         {/* Dynamic Filter Deck */}
         <div
           ref={filterReveal.ref}
-          className={`p-5 sm:p-7 rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-white/10 shadow-2xl mb-10 space-y-5 transition-all duration-700 ${
+          className={`p-5 sm:p-7 rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-white/10 shadow-2xl mb-6 space-y-5 transition-all duration-700 ${
             filterReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >

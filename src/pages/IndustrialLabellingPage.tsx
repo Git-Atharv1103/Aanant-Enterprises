@@ -37,7 +37,7 @@ export const IndustrialLabellingPage: React.FC<IndustrialLabellingPageProps> = (
   );
 
   return (
-    <main className="bg-transparent text-white min-h-screen pt-28 pb-24 relative overflow-hidden" role="main">
+    <main className="bg-transparent text-white min-h-screen pt-6 sm:pt-8 pb-12 relative overflow-hidden" role="main">
       {/* Background Ambience */}
       <div className="absolute inset-0 industrial-grid-dark opacity-30 pointer-events-none" />
       <div
@@ -51,10 +51,10 @@ export const IndustrialLabellingPage: React.FC<IndustrialLabellingPageProps> = (
       <HangingLantern className="hidden md:block absolute top-20 right-4 z-10" />
       <RangoliCornerPattern className="hidden lg:block absolute bottom-0 right-0 z-0 rotate-90" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-7">
 
         {/* ── Breadcrumb & Back Navigation ── */}
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-3">
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-mono text-slate-400">
             <button
               onClick={() => onNavigate('home')}
@@ -83,7 +83,7 @@ export const IndustrialLabellingPage: React.FC<IndustrialLabellingPageProps> = (
         </div>
 
         {/* ── Page Hero Banner (Split Industrial Layout) ── */}
-        <div className="rounded-3xl border border-white/10 bg-[#0E1628]/85 backdrop-blur-xl p-6 sm:p-10 lg:p-12 relative overflow-hidden shadow-2xl">
+        <div className="rounded-3xl border border-white/10 bg-[#0E1628]/85 backdrop-blur-xl p-5 sm:p-8 lg:p-10 relative overflow-hidden shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center relative z-10">
             
             {/* Left Content Column */}
