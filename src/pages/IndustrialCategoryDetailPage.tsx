@@ -22,7 +22,7 @@ import {
   type IndustrialLabellingCategory,
 } from '../data/industrialLabellingData';
 import { COMPANY_INFO } from '../data/companyData';
-import { RealisticDiya, HangingLantern, RangoliCornerPattern } from '../components/DiwaliFestiveDecor';
+import { RealisticDiya } from '../components/DiwaliFestiveDecor';
 
 interface IndustrialCategoryDetailPageProps {
   categorySlug: string;
@@ -72,7 +72,7 @@ export const IndustrialCategoryDetailPage: React.FC<IndustrialCategoryDetailPage
   const whatsappUrl = `https://wa.me/${COMPANY_INFO.primaryWhatsApp}?text=${whatsappMessage}`;
 
   return (
-    <main className="bg-transparent text-white min-h-screen pt-6 sm:pt-8 pb-12 relative overflow-hidden" role="main">
+    <main className="bg-transparent text-white min-h-screen pt-3 sm:pt-4 pb-12 relative overflow-hidden" role="main">
       {/* Background Ambience */}
       <div className="absolute inset-0 industrial-grid-dark opacity-30 pointer-events-none" />
       <div
@@ -81,11 +81,6 @@ export const IndustrialCategoryDetailPage: React.FC<IndustrialCategoryDetailPage
           background: `radial-gradient(circle, ${activeCategory.accentColor}18 0%, transparent 70%)`,
         }}
       />
-
-      {/* Festive Diwali Elements */}
-      <HangingLantern className="hidden md:block absolute top-20 left-4 z-10" />
-      <HangingLantern className="hidden md:block absolute top-20 right-4 z-10" />
-      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 right-0 z-0 rotate-90" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-7">
 

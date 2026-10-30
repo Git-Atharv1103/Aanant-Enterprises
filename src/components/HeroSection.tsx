@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
 import { ProductMarqueeSlider } from './ProductMarqueeSlider';
-import { RealisticDiya, HangingLantern, RangoliCornerPattern } from './DiwaliFestiveDecor';
+import { RealisticDiya } from './DiwaliFestiveDecor';
 
 interface HeroSectionProps {
   onNavigate: (page: string) => void;
@@ -67,12 +67,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
           background: 'radial-gradient(circle, rgba(255, 107, 0, 0.24) 0%, rgba(245, 158, 11, 0.12) 40%, transparent 70%)',
         }}
       />
-
-      {/* Diwali Festive Decorative Elements */}
-      <HangingLantern className="hidden md:block absolute top-0 left-6 z-10" />
-      <HangingLantern className="hidden md:block absolute top-0 right-8 z-10" />
-      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 -left-6 z-0 opacity-40" />
-      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 -right-6 z-0 rotate-90 opacity-40" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Spacious Two-Column Layout: Left (42-45%) | Right (55-58%) */}

@@ -16,7 +16,7 @@ import {
 } from '../data/industrialLabellingData';
 import { IndustrialCategoryCard } from '../components/IndustrialCategoryCard';
 import { COMPANY_INFO } from '../data/companyData';
-import { RealisticDiya, HangingLantern, RangoliCornerPattern } from '../components/DiwaliFestiveDecor';
+import { RealisticDiya } from '../components/DiwaliFestiveDecor';
 
 interface IndustrialLabellingPageProps {
   onNavigate: (route: string) => void;
@@ -37,7 +37,7 @@ export const IndustrialLabellingPage: React.FC<IndustrialLabellingPageProps> = (
   );
 
   return (
-    <main className="bg-transparent text-white min-h-screen pt-6 sm:pt-8 pb-12 relative overflow-hidden" role="main">
+    <main className="bg-transparent text-white min-h-screen pt-3 sm:pt-4 pb-12 relative overflow-hidden" role="main">
       {/* Background Ambience */}
       <div className="absolute inset-0 industrial-grid-dark opacity-30 pointer-events-none" />
       <div
@@ -46,10 +46,6 @@ export const IndustrialLabellingPage: React.FC<IndustrialLabellingPageProps> = (
           background: 'radial-gradient(circle, rgba(52,120,246,0.12) 0%, transparent 70%)',
         }}
       />
-      {/* Decorative Diwali Accents */}
-      <HangingLantern className="hidden md:block absolute top-20 left-4 z-10" />
-      <HangingLantern className="hidden md:block absolute top-20 right-4 z-10" />
-      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 right-0 z-0 rotate-90" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-7">
 

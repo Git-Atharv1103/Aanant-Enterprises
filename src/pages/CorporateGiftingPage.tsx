@@ -16,8 +16,6 @@ import {
 import { CorporateGiftingCategoryCard } from '../components/CorporateGiftingCategoryCard';
 import {
   RealisticDiya,
-  HangingLantern,
-  RangoliCornerPattern,
 } from '../components/DiwaliFestiveDecor';
 import { useScrollReveal } from '../utils/useScrollReveal';
 
@@ -39,7 +37,7 @@ export const CorporateGiftingPage: React.FC<CorporateGiftingPageProps> = ({
   return (
     <main
       ref={pageRef}
-      className="bg-transparent text-white min-h-screen pt-6 sm:pt-8 pb-12 relative overflow-hidden select-none"
+      className="bg-transparent text-white min-h-screen pt-3 sm:pt-4 pb-12 relative overflow-hidden select-none"
       role="main"
     >
       {/* ── Background Diwali Ambience & Radiant Festive Lighting ── */}
@@ -65,12 +63,6 @@ export const CorporateGiftingPage: React.FC<CorporateGiftingPageProps> = ({
             'radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, rgba(245, 158, 11, 0.08) 50%, transparent 70%)',
         }}
       />
-
-      {/* Decorative Hanging Lanterns */}
-      <HangingLantern className="hidden md:block absolute top-20 left-4 z-10" />
-      <HangingLantern className="hidden md:block absolute top-20 right-4 z-10" />
-      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 right-0 z-0 rotate-90 opacity-40" />
-      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 left-0 z-0 opacity-40" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-7">
 

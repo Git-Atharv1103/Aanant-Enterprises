@@ -12,7 +12,7 @@ import {
   MessageCircle,
 } from 'lucide-react';
 import { FLAGSHIP_SERVICES, COMPANY_INFO } from '../data/companyData';
-import { RealisticDiya, HangingLantern, RangoliCornerPattern } from '../components/DiwaliFestiveDecor';
+import { RealisticDiya } from '../components/DiwaliFestiveDecor';
 
 interface ServiceDetailPageProps {
   serviceId: string;
@@ -37,7 +37,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
   const whatsappUrl = `https://wa.me/${COMPANY_INFO.primaryWhatsApp}?text=${whatsappMessage}`;
 
   return (
-    <main className="bg-transparent text-white min-h-screen pt-6 sm:pt-8 pb-12 relative overflow-hidden select-none">
+    <main className="bg-transparent text-white min-h-screen pt-3 sm:pt-4 pb-12 relative overflow-hidden select-none">
       {/* Background Ambience with Diwali Warmth */}
       <div className="absolute inset-0 industrial-grid-dark opacity-30 pointer-events-none" />
       <div
@@ -52,11 +52,6 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
           background: 'radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%)',
         }}
       />
-
-      {/* Decorative Hanging Lanterns */}
-      <HangingLantern className="hidden md:block absolute top-20 left-4 z-10" />
-      <HangingLantern className="hidden md:block absolute top-20 right-4 z-10" />
-      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 right-0 z-0 rotate-90" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-7">
 

@@ -97,7 +97,7 @@ export const RealisticDiya: React.FC<{ size?: number; className?: string }> = ({
  */
 export const HangingLantern: React.FC<{ className?: string }> = ({ className = '' }) => {
   return (
-    <div className={`relative pointer-events-none select-none ${className}`}>
+    <div className={`pointer-events-none select-none ${className}`}>
       <svg
         viewBox="0 0 60 120"
         fill="none"
