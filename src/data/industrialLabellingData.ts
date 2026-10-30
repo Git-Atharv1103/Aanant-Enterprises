@@ -23,19 +23,10 @@ export type IndustrialLabellingMainCard = IndustrialLabellingCategory & {
   allImages: string[];
 };
 
-/**
- * Dynamic scan of any images placed in public/images/industrial-labelling/<category>/
- * Vite bundle resolves any image files placed in this folder.
- */
-const dynamicImageImports = import.meta.glob<string>(
-  '../../public/images/industrial-labelling/**/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}',
-  { eager: true, query: '?url', import: 'default' }
-);
-
 export function getDiscoveredImagesForCategory(folderName: string): string[] {
   const images: string[] = [];
 
-  // 1. Check generated manifest JSON
+  // Read from generated manifest JSON
   const fromManifest = (manifestJson as Record<string, string[]>)[folderName];
   if (Array.isArray(fromManifest) && fromManifest.length > 0) {
     fromManifest.forEach((img) => {
@@ -46,17 +37,6 @@ export function getDiscoveredImagesForCategory(folderName: string): string[] {
         images.push(formatted);
       }
     });
-  }
-
-  // 2. Discover dynamically via Vite glob
-  const searchPrefix = `../../public/images/industrial-labelling/${folderName}/`;
-  for (const path in dynamicImageImports) {
-    if (path.startsWith(searchPrefix) && !path.endsWith('README.md')) {
-      const publicPath = path.replace('../../public', '');
-      if (!images.includes(publicPath)) {
-        images.push(publicPath);
-      }
-    }
   }
 
   return images;

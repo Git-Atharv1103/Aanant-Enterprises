@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
 import { ProductMarqueeSlider } from './ProductMarqueeSlider';
+import { RealisticDiya, HangingLantern, RangoliCornerPattern } from './DiwaliFestiveDecor';
 
 interface HeroSectionProps {
   onNavigate: (page: string) => void;
@@ -57,9 +58,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
       <div
         className="absolute top-1/3 -right-20 w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(255,107,0,0.12) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(255,107,0,0.14) 0%, rgba(245,158,11,0.06) 40%, transparent 70%)',
         }}
       />
+
+      {/* Diwali Festive Decorative Elements */}
+      <HangingLantern className="hidden md:block absolute top-0 left-6 z-10" />
+      <HangingLantern className="hidden md:block absolute top-0 right-8 z-10" />
+      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 -left-6 z-0" />
+      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 -right-6 z-0 rotate-90" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Spacious Two-Column Layout: Left (42-45%) | Right (55-58%) */}
@@ -70,10 +77,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
              ══════════════════════════════════════════════════════════ */}
           <div className="lg:col-span-5 space-y-6 sm:space-y-7 z-20">
 
-            {/* Small Eyebrow Label */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-orange text-xs font-mono font-semibold tracking-wider uppercase backdrop-blur-md shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse" />
-              <span>LASER ENGRAVING • INDUSTRIAL MARKING • CUSTOM PRODUCTS</span>
+            {/* Small Eyebrow Label with Festive Diya Glow */}
+            <div className="flex items-center gap-3">
+              <RealisticDiya size={34} className="shrink-0 -mt-1 hidden sm:inline-flex" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-amber-500/30 text-amber-300 text-xs font-mono font-semibold tracking-wider uppercase backdrop-blur-md shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse" />
+                <span>LASER ENGRAVING • INDUSTRIAL MARKING • DIWALI CORPORATE GIFTS</span>
+              </div>
             </div>
 
             {/* Main Heading */}

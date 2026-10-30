@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
-import { ExternalLink, Play } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { ExternalLink, Play, Pause, Eye } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
-import { INSTAGRAM_REELS } from '../data/instagramReels';
+import { INSTAGRAM_REELS, type InstagramReel } from '../data/instagramReels';
 import { useScrollReveal } from '../utils/useScrollReveal';
 
-// Custom Instagram SVG (lucide-react version in this project doesn't export it)
+// Custom Instagram SVG icon
 const InstagramIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg
     className={className}
@@ -21,49 +21,165 @@ const InstagramIcon: React.FC<{ className?: string }> = ({ className }) => (
   </svg>
 );
 
+const ReelCard: React.FC<{ reel: InstagramReel }> = ({ reel }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
+
+  const togglePlay = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+    }
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    if (videoRef.current && !isPlaying) {
+      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    if (videoRef.current && isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  return (
+    <div
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="group relative w-full max-w-[270px] mx-auto rounded-3xl overflow-hidden border border-white/10 hover:border-[#E1306C]/60 bg-[#0E1628] shadow-2xl transition-all duration-300 hover:-translate-y-2 select-none flex flex-col"
+      style={{
+        boxShadow: isHovered
+          ? '0 24px 48px -12px rgba(225, 48, 108, 0.35), 0 0 24px rgba(193, 53, 132, 0.2)'
+          : undefined,
+      }}
+    >
+      {/* 9:16 Video Container */}
+      <div className="relative w-full aspect-[9/16] overflow-hidden bg-black flex items-center justify-center">
+        <video
+          ref={videoRef}
+          src={reel.videoSrc}
+          poster={reel.posterSrc}
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+        />
+
+        {/* Gradient Overlays for contrast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1020] via-transparent to-black/60 pointer-events-none" />
+
+        {/* Top Header: Instagram Reel Tag & View count */}
+        <div className="absolute top-3 inset-x-3 flex items-center justify-between z-20">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] font-mono font-bold text-white shadow-sm">
+            <InstagramIcon className="w-3 h-3 text-[#E1306C]" />
+            <span>Reel</span>
+          </span>
+
+          {reel.views && (
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-black/50 backdrop-blur-md text-[10px] font-mono text-slate-300 border border-white/10">
+              <Eye className="w-3 h-3 text-brand-orange" />
+              <span>{reel.views}</span>
+            </span>
+          )}
+        </div>
+
+        {/* Center Play/Pause Floating Controller */}
+        <button
+          type="button"
+          onClick={togglePlay}
+          aria-label={isPlaying ? 'Pause Reel' : 'Play Reel'}
+          className={`absolute w-12 h-12 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white flex items-center justify-center z-20 transition-all duration-300 shadow-xl ${
+            isPlaying ? 'opacity-0 group-hover:opacity-100 scale-90' : 'opacity-100 scale-100 group-hover:bg-[#E1306C]'
+          }`}
+        >
+          {isPlaying ? (
+            <Pause className="w-5 h-5 text-white" />
+          ) : (
+            <Play className="w-5 h-5 text-white ml-0.5 fill-white" />
+          )}
+        </button>
+
+        {/* Bottom Content Area */}
+        <div className="absolute bottom-3 inset-x-3 z-20 space-y-2">
+          <div>
+            <h3 className="text-xs sm:text-sm font-bold text-white leading-snug line-clamp-1 drop-shadow-md">
+              {reel.title}
+            </h3>
+            <p className="text-[11px] text-slate-300 font-light line-clamp-2 mt-0.5 drop-shadow-sm">
+              {reel.description}
+            </p>
+          </div>
+
+          {/* Action CTA */}
+          <a
+            href={reel.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="w-full py-1.5 px-3 rounded-xl bg-gradient-to-r from-[#E1306C] via-[#C13584] to-[#833AB4] hover:opacity-95 text-white text-[11px] font-bold flex items-center justify-center gap-1.5 shadow-md transition-transform group-hover:scale-[1.02]"
+          >
+            <InstagramIcon className="w-3.5 h-3.5" />
+            <span>Watch on Instagram</span>
+            <ExternalLink className="w-3 h-3 opacity-80" />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const InstagramReelsSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   useScrollReveal(sectionRef);
-
-  const activeReels = INSTAGRAM_REELS.filter((r) => !r.isPlaceholder && r.url);
 
   return (
     <section
       ref={sectionRef}
       id="instagram"
       className="py-24 lg:py-32 relative overflow-hidden bg-gradient-to-b from-[#090D18] via-[#0E1628] to-[#090D18] text-slate-100 border-t border-white/10"
+      aria-label="Aanant Enterprises Instagram Reels"
     >
-      {/* Background */}
+      {/* Background Decor */}
       <div className="absolute inset-0 industrial-grid-dark opacity-25 pointer-events-none" />
-      <div className="absolute top-1/4 -right-40 w-96 h-96 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 -right-40 w-96 h-96 bg-[#E1306C]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -left-40 w-96 h-96 bg-brand-electric/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center space-y-4 mb-12 reveal">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-orange/15 border border-brand-orange/30 text-brand-orange text-xs font-mono font-bold tracking-wider uppercase">
+        <div className="max-w-3xl mx-auto text-center space-y-4 reveal">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E1306C]/15 border border-[#E1306C]/30 text-[#E1306C] text-xs font-mono font-bold tracking-wider uppercase">
             <InstagramIcon className="w-3.5 h-3.5" />
             <span>Follow Us on Instagram</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
             See Our Work{' '}
-            <span className="bg-gradient-to-r from-brand-orange via-amber-400 to-brand-electric bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#E1306C] via-amber-300 to-brand-electric bg-clip-text text-transparent">
               in Action
             </span>
           </h2>
 
           <p className="text-base sm:text-lg text-slate-300 font-light leading-relaxed max-w-xl mx-auto">
-            Watch our laser engraving and cutting process, finished products, and customisation
-            work on our official Instagram channel.
+            Explore live workshop demonstrations of laser engraving, Trafolite switchgear plate cutting, and industrial marking from our Pune facility.
           </p>
 
           <a
             href={COMPANY_INFO.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-2xl text-sm font-bold text-white bg-gradient-to-r from-[#E1306C] via-[#C13584] to-[#833AB4] hover:opacity-90 transition-opacity shadow-lg"
+            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#E1306C] via-[#C13584] to-[#833AB4] hover:opacity-90 transition-opacity shadow-lg shadow-[#E1306C]/25"
           >
             <InstagramIcon className="w-4 h-4" />
             <span>Follow @aanantenterprises03</span>
@@ -71,108 +187,19 @@ export const InstagramReelsSection: React.FC = () => {
           </a>
         </div>
 
-        {/* Reels Grid or Empty State */}
-        {activeReels.length === 0 ? (
-          /* ── Empty State ── */
-          <div className="reveal delay-100">
-            <div className="max-w-lg mx-auto rounded-3xl border border-dashed border-white/20 bg-white/[0.03] backdrop-blur-xl p-12 text-center space-y-5">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#E1306C]/20 to-[#833AB4]/20 border border-white/10 flex items-center justify-center mx-auto">
-                <InstagramIcon className="w-8 h-8 text-[#E1306C]" />
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-white mb-2">Instagram Reels Coming Soon</h3>
-                <p className="text-sm text-slate-400 font-light leading-relaxed">
-                  Visit our Instagram profile to see our latest laser engraving and cutting work,
-                  product videos, and behind-the-scenes content.
-                </p>
-              </div>
-              <a
-                href={COMPANY_INFO.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#E1306C] to-[#833AB4] hover:opacity-90 transition-opacity"
-              >
-                <InstagramIcon className="w-4 h-4" />
-                <span>Visit Our Instagram</span>
-                <ExternalLink className="w-3.5 h-3.5 opacity-70" />
-              </a>
-              <p className="text-[11px] font-mono text-slate-500">
-                To display Reels here, add URLs to{' '}
-                <code className="text-brand-orange">src/data/instagramReels.ts</code>
-              </p>
-            </div>
-          </div>
-        ) : (
-          /* ── Reels Grid ── */
-          <div className="reveal delay-100">
-            {/* Horizontally scrollable on mobile, grid on desktop */}
-            <div className="flex gap-5 overflow-x-auto pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible md:pb-0">
-              {activeReels.map((reel, i) => (
-                <a
-                  key={reel.id}
-                  href={reel.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative flex-shrink-0 w-60 md:w-auto rounded-2xl overflow-hidden border border-white/10 bg-black/40 hover:border-brand-orange/40 transition-all duration-300 hover:scale-[1.02]"
-                  style={{ aspectRatio: '9/16' }}
-                  aria-label={reel.title || `Instagram Reel ${i + 1}`}
-                >
-                  {/* Thumbnail or gradient placeholder */}
-                  {reel.thumbnailPath ? (
-                    <img
-                      src={reel.thumbnailPath}
-                      alt={reel.title || 'Instagram Reel'}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-[#E1306C]/20 via-[#C13584]/10 to-[#833AB4]/20" />
-                  )}
+        {/* ── 4 Balanced 9:16 Reel Cards ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+          {INSTAGRAM_REELS.map((reel) => (
+            <ReelCard key={reel.id} reel={reel} />
+          ))}
+        </div>
 
-                  {/* Play Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                      <Play className="w-6 h-6 text-white fill-white ml-1" />
-                    </div>
-                  </div>
-
-                  {/* Instagram badge */}
-                  <div className="absolute top-3 right-3">
-                    <span className="flex items-center gap-1.5 px-2 py-1 rounded-lg text-[11px] font-mono font-bold text-white bg-black/60 backdrop-blur-sm border border-white/15">
-                      <InstagramIcon className="w-3 h-3" />
-                      Reel
-                    </span>
-                  </div>
-
-                  {/* Bottom info */}
-                  {reel.title && (
-                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                      <p className="text-xs font-bold text-white line-clamp-2">{reel.title}</p>
-                      {reel.description && (
-                        <p className="text-[11px] text-slate-300 font-light mt-0.5 line-clamp-2">
-                          {reel.description}
-                        </p>
-                      )}
-                    </div>
-                  )}
-                </a>
-              ))}
-            </div>
-
-            {/* Footer link */}
-            <div className="mt-10 text-center reveal delay-200">
-              <a
-                href={COMPANY_INFO.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-brand-orange hover:text-amber-400 font-mono font-bold transition-colors"
-              >
-                <span>View all posts on Instagram</span>
-                <ExternalLink className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-        )}
+        {/* Footer Note */}
+        <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-center text-xs font-mono text-slate-400">
+          <span>
+            Hover or tap any card to play the workshop reel preview • Real clips from Aanant Enterprises Pune workshop
+          </span>
+        </div>
 
       </div>
     </section>
