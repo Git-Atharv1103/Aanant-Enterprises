@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <radialGradient id="deskAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFB547" stop-opacity="0.25"/>
+      <stop offset="70%" stop-color="#0B1020" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="deskLeather" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="goldRim" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="50%" stop-color="#FFB300"/>
+      <stop offset="100%" stop-color="#9A6700"/>
+    </linearGradient>
+    <filter id="deskShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="18" flood-color="#000000" flood-opacity="0.65"/>
+    </filter>
+  </defs>
+
+  <circle cx="300" cy="300" r="260" fill="url(#deskAura)"/>
+
+  <!-- Desk Organizer Set -->
+  <g filter="url(#deskShadow)">
+    <!-- Base Mat / Pad -->
+    <rect x="120" y="320" width="360" height="170" rx="16" fill="url(#deskLeather)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <rect x="135" y="335" width="330" height="140" rx="10" fill="none" stroke="rgba(255,181,71,0.2)" stroke-dasharray="6,4" stroke-width="1"/>
+
+    <!-- Leather Pen Stand Cylinder -->
+    <rect x="160" y="200" width="80" height="150" rx="14" fill="#0B1020" stroke="url(#goldRim)" stroke-width="1.5"/>
+    <ellipse cx="200" cy="205" rx="38" ry="10" fill="#1E293B" stroke="url(#goldRim)" stroke-width="1"/>
+
+    <!-- Pens inside stand -->
+    <line x1="190" y1="200" x2="175" y2="130" stroke="#FFB300" stroke-width="7" stroke-linecap="round"/>
+    <line x1="210" y1="200" x2="225" y2="140" stroke="#38BDF8" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- Business Card Holder -->
+    <rect x="270" y="240" width="100" height="110" rx="10" fill="#0B1020" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+    <rect x="280" y="255" width="80" height="50" rx="4" fill="#F8FAFC"/>
+    <text x="320" y="285" font-family="sans-serif" font-size="7" font-weight="bold" fill="#0F172A" text-anchor="middle">AANANT</text>
+    <line x1="285" y1="292" x2="355" y2="292" stroke="#CBD5E1" stroke-width="1"/>
+
+    <!-- Mobile Stand with Metallic Monogram -->
+    <rect x="390" y="220" width="70" height="130" rx="10" fill="#0B1020" stroke="url(#goldRim)" stroke-width="1.2"/>
+    <polygon points="400,240 450,240 450,330 400,330" fill="#1E293B" rx="4"/>
+    <circle cx="425" cy="285" r="8" fill="url(#goldRim)"/>
+    <text x="425" y="288" font-family="sans-serif" font-size="8" font-weight="bold" fill="#000000" text-anchor="middle">A</text>
+  </g>
+</svg>

@@ -9,6 +9,8 @@ import { ServiceDetailPage } from './pages/ServiceDetailPage';
 import { PlaceholderPage } from './pages/PlaceholderPage';
 import { IndustrialLabellingPage } from './pages/IndustrialLabellingPage';
 import { IndustrialCategoryDetailPage } from './pages/IndustrialCategoryDetailPage';
+import { CorporateGiftingPage } from './pages/CorporateGiftingPage';
+import { CorporateGiftingCategoryDetailPage } from './pages/CorporateGiftingCategoryDetailPage';
 import { DiwaliTopBanner } from './components/DiwaliFestiveDecor';
 
 export function App() {
@@ -102,16 +104,55 @@ export function App() {
       );
     }
 
-    // ── Other Service Detail Placeholder Pages ──
-    if (norm === 'service-corporate-gifting' || norm === 'corporate-gifting') {
+    // ── Corporate Gifting Main Page & 8 Subcategory Detail Pages ──
+    if (
+      norm === 'service-corporate-gifting' ||
+      norm === 'corporate-gifting' ||
+      norm === 'services/corporate-gifting'
+    ) {
+      return <CorporateGiftingPage onNavigate={handleNavigate} />;
+    }
+
+    if (norm.includes('corporate-gifting/')) {
+      const categorySlug = norm
+        .replace('services/corporate-gifting/', '')
+        .replace('corporate-gifting/', '');
       return (
-        <ServiceDetailPage
-          serviceId="service-corporate-gifting"
+        <CorporateGiftingCategoryDetailPage
+          categorySlug={categorySlug}
           onNavigate={handleNavigate}
         />
       );
     }
 
+    // Direct Corporate Gifting category slug access
+    const giftingCategories = [
+      'pens',
+      'bags',
+      'diaries',
+      'bottles',
+      'gift-combos',
+      'office-accessories',
+      'gift-boxes',
+      'personalised-gifts',
+      'corporate-pens',
+      'corporate-bags',
+      'diaries-notebooks',
+      'corporate-bottles',
+      'customised-office-accessories',
+      'corporate-gift-boxes',
+      'personalised-corporate-gifts',
+    ];
+    if (giftingCategories.includes(norm)) {
+      return (
+        <CorporateGiftingCategoryDetailPage
+          categorySlug={norm}
+          onNavigate={handleNavigate}
+        />
+      );
+    }
+
+    // ── Other Service Detail Pages ──
     if (norm === 'service-mdf-acrylic-cutouts' || norm === 'mdf-acrylic-cutouts') {
       return (
         <ServiceDetailPage

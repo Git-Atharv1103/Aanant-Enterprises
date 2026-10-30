@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <radialGradient id="bagAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF6B00" stop-opacity="0.2"/>
+      <stop offset="70%" stop-color="#0B1020" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="leatherGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#090D16"/>
+    </linearGradient>
+    <linearGradient id="pocketGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="50%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <filter id="bagShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="20" flood-color="#000000" flood-opacity="0.7"/>
+    </filter>
+  </defs>
+
+  <circle cx="300" cy="300" r="260" fill="url(#bagAura)"/>
+
+  <!-- Bag Main Body -->
+  <g filter="url(#bagShadow)">
+    <!-- Base Shadow -->
+    <ellipse cx="300" cy="505" rx="140" ry="18" fill="#000000" opacity="0.6"/>
+
+    <!-- Backpack Dome Body -->
+    <path d="M190,490 C180,340 200,200 300,190 C400,200 420,340 410,490 C410,500 190,500 190,490 Z" fill="url(#leatherGrad)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+
+    <!-- Top Ergonomic Handle -->
+    <path d="M260,190 C260,150 340,150 340,190" fill="none" stroke="#475569" stroke-width="14" stroke-linecap="round"/>
+    <path d="M265,190 C265,158 335,158 335,190" fill="none" stroke="#FF6B00" stroke-width="2"/>
+
+    <!-- Front Zipper Pocket -->
+    <path d="M210,360 C210,320 230,300 300,300 C370,300 390,320 390,360 L390,480 L210,480 Z" fill="url(#pocketGrad)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+    <!-- Metal Branding Badge (Aanant Enterprises) -->
+    <rect x="260" y="380" width="80" height="24" rx="4" fill="#0B1020" stroke="#FFB547" stroke-width="1.2"/>
+    <text x="300" y="396" font-family="sans-serif" font-size="9" font-weight="bold" letter-spacing="2" fill="#FFE082" text-anchor="middle">AANANT</text>
+
+    <!-- Zipper Accent Track -->
+    <path d="M205,330 C240,315 360,315 395,330" fill="none" stroke="#FF6B00" stroke-width="2.5" stroke-dasharray="4,3"/>
+
+    <!-- Side Bottle Pocket -->
+    <path d="M190,400 L180,420 L180,480 L195,480 Z" fill="#0F172A" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  </g>
+</svg>
