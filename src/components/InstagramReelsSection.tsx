@@ -148,7 +148,7 @@ export const InstagramReelsSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="instagram"
-      className="py-12 lg:py-16 relative overflow-hidden bg-gradient-to-b from-[#090D18] via-[#0E1628] to-[#090D18] text-slate-100 border-t border-white/10"
+      className="py-12 lg:py-16 relative overflow-hidden bg-gradient-to-b from-[#090D18]/60 via-[#0E1628]/50 to-[#090D18]/60 text-slate-100 border-t border-white/10"
       aria-label="Aanant Enterprises Instagram Reels"
     >
       {/* Background Decor */}

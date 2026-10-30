@@ -16,7 +16,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onNavigate }) 
   return (
     <section
       id="services"
-      className="py-12 lg:py-16 bg-[#0B1020] text-white relative overflow-hidden border-t border-white/10"
+      className="py-12 lg:py-16 bg-gradient-to-b from-transparent via-[#0D152A]/40 to-transparent text-white relative overflow-hidden border-t border-white/10"
       aria-label="Aanant Enterprises Our Services"
     >
       {/* Background Decorative Patterns with Radiant Diwali Golden Warmth & Lighting */}

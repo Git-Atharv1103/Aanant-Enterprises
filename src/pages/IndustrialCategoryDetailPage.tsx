@@ -72,7 +72,7 @@ export const IndustrialCategoryDetailPage: React.FC<IndustrialCategoryDetailPage
   const whatsappUrl = `https://wa.me/${COMPANY_INFO.primaryWhatsApp}?text=${whatsappMessage}`;
 
   return (
-    <main className="bg-[#0B1020] text-white min-h-screen pt-28 pb-24 relative overflow-hidden" role="main">
+    <main className="bg-transparent text-white min-h-screen pt-28 pb-24 relative overflow-hidden" role="main">
       {/* Background Ambience */}
       <div className="absolute inset-0 industrial-grid-dark opacity-30 pointer-events-none" />
       <div

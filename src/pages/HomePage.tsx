@@ -15,7 +15,7 @@ interface HomePageProps {
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
-    <main className="bg-[#0B1020] text-slate-100 overflow-hidden" role="main">
+    <main className="bg-transparent text-slate-100 overflow-hidden" role="main">
 
       {/* ── 1. Homepage Hero Section with Dual Counter-Sliding Vertical Product Columns ── */}
       <HeroSection onNavigate={onNavigate} />

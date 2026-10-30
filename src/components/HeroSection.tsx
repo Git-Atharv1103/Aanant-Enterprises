@@ -40,7 +40,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
   return (
     <section
-      className="relative flex items-center bg-[#0B1020] text-white overflow-hidden pt-6 pb-8 sm:pt-8 sm:pb-10 lg:pt-10 lg:pb-12"
+      className="relative flex items-center bg-transparent text-white overflow-hidden pt-6 pb-8 sm:pt-8 sm:pb-10 lg:pt-10 lg:pb-12"
       id="hero-section"
       aria-label="Aanant Enterprises Hero Section"
     >

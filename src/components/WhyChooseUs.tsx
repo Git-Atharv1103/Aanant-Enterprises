@@ -37,7 +37,7 @@ export const WhyChooseUs: React.FC = () => {
     <section
       ref={sectionRef}
       id="why-choose-us"
-      className="py-12 lg:py-16 relative overflow-hidden bg-gradient-to-b from-[#0B1020] via-[#0E1628] to-[#0B1020] text-slate-100 border-t border-white/10"
+      className="py-12 lg:py-16 relative overflow-hidden bg-gradient-to-b from-[#0B1020]/60 via-[#0E1628]/50 to-[#0B1020]/60 text-slate-100 border-t border-white/10"
     >
       {/* Decorative Grids and Light Orbs */}
       <div className="absolute inset-0 industrial-grid-dark opacity-35 pointer-events-none" />

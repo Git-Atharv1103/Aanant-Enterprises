@@ -50,7 +50,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = () => {
     <section
       ref={sectionRef}
       id="our-process"
-      className="py-12 lg:py-16 bg-gradient-to-b from-[#090D18] via-[#0E1628] to-[#090D18] text-slate-100 overflow-hidden relative border-y border-white/10"
+      className="py-12 lg:py-16 bg-gradient-to-b from-[#090D18]/60 via-[#0E1628]/50 to-[#090D18]/60 text-slate-100 overflow-hidden relative border-y border-white/10"
     >
       {/* Background Engineering Grids and Ambient Lights */}
       <div className="absolute inset-0 industrial-grid-dark opacity-35 pointer-events-none" />

@@ -37,7 +37,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
   const whatsappUrl = `https://wa.me/${COMPANY_INFO.primaryWhatsApp}?text=${whatsappMessage}`;
 
   return (
-    <main className="bg-[#0B1020] text-white min-h-screen pt-28 pb-20 relative overflow-hidden select-none">
+    <main className="bg-transparent text-white min-h-screen pt-28 pb-20 relative overflow-hidden select-none">
       {/* Background Ambience with Diwali Warmth */}
       <div className="absolute inset-0 industrial-grid-dark opacity-30 pointer-events-none" />
       <div
