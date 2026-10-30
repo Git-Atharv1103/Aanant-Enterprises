@@ -120,14 +120,14 @@ export const HorizontalProductMarquee: React.FC<HorizontalProductMarqueeProps> =
 
   return (
     <section
-      className="py-10 bg-[#090E1A] border-y border-white/10 relative overflow-hidden select-none"
+      className="py-5 sm:py-6 bg-[#090E1A] border-y border-white/10 relative overflow-hidden select-none"
       aria-label="Continuous Horizontal Product Showcase"
     >
       {/* Background Ambience */}
       <div className="absolute inset-0 industrial-grid-dark opacity-15 pointer-events-none" />
 
       {/* Header Strip */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-5 flex flex-wrap items-center justify-between gap-3">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-3.5 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-brand-orange animate-ping" />
           <span className="font-mono text-xs font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
@@ -143,19 +143,19 @@ export const HorizontalProductMarquee: React.FC<HorizontalProductMarqueeProps> =
 
       {/* Infinite Horizontal Running Track with Left & Right Gradient Fade */}
       <div className="relative w-full overflow-hidden fade-edges-x">
-        <div className="marquee-track-horizontal gap-4 sm:gap-6 py-2 px-4">
+        <div className="marquee-track-horizontal gap-4 sm:gap-5 py-1 px-4">
           {duplicatedProducts.map((item, idx) => (
             <div
               key={`${item.id}-${idx}`}
               onClick={() => onNavigate(item.route)}
-              className="group relative w-64 sm:w-72 h-44 rounded-2xl overflow-hidden shrink-0 border border-white/10 bg-[#0E1628]/95 hover:border-brand-orange/60 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer flex flex-col justify-between p-3.5"
+              className="group relative w-64 sm:w-72 h-48 rounded-2xl overflow-hidden shrink-0 border border-white/15 bg-[#0E1628]/95 hover:border-amber-400/60 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer flex flex-col justify-between p-3"
             >
               {/* Product Visual Area */}
-              <div className="relative w-full h-24 rounded-xl overflow-hidden bg-gradient-to-br from-[#070B16] to-[#121A2D] flex items-center justify-center p-2 border border-white/5">
+              <div className="relative w-full h-28 rounded-xl overflow-hidden bg-gradient-to-br from-[#070B16] to-[#121A2D] flex items-center justify-center p-1.5 border border-white/5">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.6)] transition-transform duration-500 ease-out group-hover:scale-108"
+                  className="w-full h-full object-contain filter drop-shadow-[0_6px_14px_rgba(0,0,0,0.65)] transition-transform duration-500 ease-out group-hover:scale-108"
                   loading="lazy"
                 />
 

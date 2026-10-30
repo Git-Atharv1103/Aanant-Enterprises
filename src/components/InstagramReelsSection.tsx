@@ -3,6 +3,7 @@ import { ExternalLink, Play, Pause, Eye } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
 import { INSTAGRAM_REELS, type InstagramReel } from '../data/instagramReels';
 import { useScrollReveal } from '../utils/useScrollReveal';
+import { RealisticDiya } from './DiwaliFestiveDecor';
 
 // Custom Instagram SVG icon
 const InstagramIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -147,7 +148,7 @@ export const InstagramReelsSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="instagram"
-      className="py-24 lg:py-32 relative overflow-hidden bg-gradient-to-b from-[#090D18] via-[#0E1628] to-[#090D18] text-slate-100 border-t border-white/10"
+      className="py-12 lg:py-16 relative overflow-hidden bg-gradient-to-b from-[#090D18] via-[#0E1628] to-[#090D18] text-slate-100 border-t border-white/10"
       aria-label="Aanant Enterprises Instagram Reels"
     >
       {/* Background Decor */}
@@ -155,16 +156,19 @@ export const InstagramReelsSection: React.FC = () => {
       <div className="absolute top-1/4 -right-40 w-96 h-96 bg-[#E1306C]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -left-40 w-96 h-96 bg-brand-electric/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
 
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center space-y-4 reveal">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E1306C]/15 border border-[#E1306C]/30 text-[#E1306C] text-xs font-mono font-bold tracking-wider uppercase">
-            <InstagramIcon className="w-3.5 h-3.5" />
-            <span>Follow Us on Instagram</span>
+        <div className="max-w-3xl mx-auto text-center space-y-3 reveal">
+          <div className="flex items-center justify-center gap-2.5">
+            <RealisticDiya size={26} className="shrink-0 -mt-1 hidden sm:inline-flex" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E1306C]/15 border border-[#E1306C]/30 text-[#E1306C] text-xs font-mono font-bold tracking-wider uppercase">
+              <InstagramIcon className="w-3.5 h-3.5" />
+              <span>Follow Us on Instagram</span>
+            </div>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.1]">
             See Our Work{' '}
             <span className="bg-gradient-to-r from-[#E1306C] via-amber-300 to-brand-electric bg-clip-text text-transparent">
               in Action

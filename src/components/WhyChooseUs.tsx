@@ -15,6 +15,7 @@ import {
 import { WHY_CHOOSE_US_POINTS } from '../data/companyData';
 import { useScrollReveal } from '../utils/useScrollReveal';
 import { TiltCard } from './TiltCard';
+import { RealisticDiya, RangoliCornerPattern } from './DiwaliFestiveDecor';
 
 const iconMap: Record<string, React.ElementType> = {
   Sparkles,
@@ -36,24 +37,28 @@ export const WhyChooseUs: React.FC = () => {
     <section
       ref={sectionRef}
       id="why-choose-us"
-      className="py-24 lg:py-32 relative overflow-hidden bg-gradient-to-b from-[#0B1020] via-[#0E1628] to-[#0B1020] text-slate-100 border-t border-white/10"
+      className="py-12 lg:py-16 relative overflow-hidden bg-gradient-to-b from-[#0B1020] via-[#0E1628] to-[#0B1020] text-slate-100 border-t border-white/10"
     >
       {/* Decorative Grids and Light Orbs */}
       <div className="absolute inset-0 industrial-grid-dark opacity-35 pointer-events-none" />
       <div className="absolute top-1/3 -right-32 w-80 h-80 bg-brand-electric/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 -left-32 w-80 h-80 bg-brand-orange/15 rounded-full blur-3xl pointer-events-none" />
+      <RangoliCornerPattern className="hidden lg:block absolute bottom-0 right-0 z-0 opacity-40 rotate-180" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
 
         {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-end">
-          <div className="reveal space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-electric/15 border border-brand-electric/30 text-brand-electric text-xs font-mono font-bold tracking-wider uppercase">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Why Choose Aanant Enterprises</span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-end">
+          <div className="reveal space-y-3">
+            <div className="flex items-center gap-2.5">
+              <RealisticDiya size={26} className="shrink-0 -mt-1 hidden sm:inline-flex" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-electric/15 border border-brand-electric/30 text-brand-electric text-xs font-mono font-bold tracking-wider uppercase">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Why Choose Aanant Enterprises</span>
+              </div>
             </div>
 
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.12]">
+            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.12]">
               Quality, Customisation &{' '}
               <span className="bg-gradient-to-r from-brand-orange via-amber-400 to-brand-electric bg-clip-text text-transparent">
                 Service You Can Rely On

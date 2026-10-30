@@ -26,7 +26,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate }) => {
     <section
       ref={sectionRef}
       id="about"
-      className="py-24 lg:py-32 bg-gradient-to-b from-[#090D18] via-[#0E1628] to-[#090D18] text-slate-100 overflow-hidden relative border-t border-white/10"
+      className="py-12 lg:py-16 bg-gradient-to-b from-[#090D18] via-[#0E1628] to-[#090D18] text-slate-100 overflow-hidden relative border-t border-white/10"
     >
       {/* Background Decor */}
       <div className="absolute inset-0 industrial-grid-dark opacity-35 pointer-events-none" />
@@ -34,7 +34,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate }) => {
       <div className="absolute bottom-10 right-0 w-96 h-96 bg-brand-electric/10 rounded-full blur-3xl pointer-events-none" />
       <RangoliCornerPattern className="hidden lg:block absolute top-0 right-0 z-0 rotate-90" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-14">
 
         {/* ── 1. Editorial Header ── */}
         <div className="reveal space-y-4 max-w-4xl">

@@ -40,7 +40,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
   return (
     <section
-      className="relative min-h-[92vh] lg:min-h-screen flex items-center bg-[#0B1020] text-white overflow-hidden pt-24 pb-16 lg:pt-28 lg:pb-20"
+      className="relative flex items-center bg-[#0B1020] text-white overflow-hidden pt-6 pb-8 sm:pt-8 sm:pb-10 lg:pt-10 lg:pb-12"
       id="hero-section"
       aria-label="Aanant Enterprises Hero Section"
     >
@@ -279,7 +279,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
         </div>
 
         {/* Bottom Scroll Anchor Hint */}
-        <div className="mt-12 sm:mt-16 flex flex-col items-center justify-center gap-1.5 opacity-60 hover:opacity-100 transition-opacity">
+        <div className="mt-6 sm:mt-8 flex flex-col items-center justify-center gap-1 opacity-60 hover:opacity-100 transition-opacity">
           <button
             onClick={handleExploreServices}
             className="flex flex-col items-center gap-1 text-[11px] uppercase tracking-widest text-slate-400 font-mono hover:text-brand-orange transition-colors"

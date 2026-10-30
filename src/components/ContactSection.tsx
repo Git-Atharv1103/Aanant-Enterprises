@@ -16,14 +16,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   isStandalonePage = false
 }) => {
   return (
-    <section className={`py-20 sm:py-24 bg-gradient-to-b from-[#090d16] via-[#0d1322] to-[#070a10] text-slate-100 border-t border-white/10 relative overflow-hidden ${isStandalonePage ? 'pt-32' : ''}`} id="contact-section">
+    <section className={`py-12 sm:py-16 bg-gradient-to-b from-[#090d16] via-[#0d1322] to-[#070a10] text-slate-100 border-t border-white/10 relative overflow-hidden ${isStandalonePage ? 'pt-24 sm:pt-28' : ''}`} id="contact-section">
       <div className="absolute inset-0 industrial-grid-dark opacity-35 pointer-events-none" />
       <RangoliCornerPattern className="hidden lg:block absolute bottom-0 left-0 z-0" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center space-y-3 mb-16">
+        <div className="max-w-3xl mx-auto text-center space-y-3 mb-8 sm:mb-10">
           <div className="flex items-center justify-center gap-2.5">
             <RealisticDiya size={26} className="shrink-0 -mt-1 hidden sm:inline-flex" />
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-orange/20 border border-brand-orange/30 text-brand-orange text-xs font-mono font-bold tracking-wider uppercase">

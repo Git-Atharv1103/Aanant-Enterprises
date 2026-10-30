@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Building2, Sparkles, CheckCircle2 } from 'lucide-react';
 import { useScrollReveal } from '../utils/useScrollReveal';
+import { RealisticDiya } from './DiwaliFestiveDecor';
 
 export interface VerifiedClient {
   name: string;
@@ -86,7 +87,7 @@ export const ClienteleSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="clientele"
-      className="py-24 lg:py-32 relative overflow-hidden bg-gradient-to-b from-[#090D18] via-[#0E1628] to-[#090D18] text-slate-100 border-t border-white/10"
+      className="py-12 lg:py-16 relative overflow-hidden bg-gradient-to-b from-[#090D18] via-[#0E1628] to-[#090D18] text-slate-100 border-t border-white/10"
       aria-label="Trusted By Our Clientele"
     >
       {/* Background Decor */}
@@ -102,16 +103,19 @@ export const ClienteleSection: React.FC = () => {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
 
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center space-y-4 reveal">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-orange/15 border border-brand-orange/30 text-brand-orange text-xs font-mono font-bold tracking-wider uppercase">
-            <Building2 className="w-3.5 h-3.5" />
-            <span>Trusted By Our Clientele</span>
+        <div className="max-w-3xl mx-auto text-center space-y-3 reveal">
+          <div className="flex items-center justify-center gap-2.5">
+            <RealisticDiya size={26} className="shrink-0 -mt-1 hidden sm:inline-flex" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-orange/15 border border-brand-orange/30 text-brand-orange text-xs font-mono font-bold tracking-wider uppercase">
+              <Building2 className="w-3.5 h-3.5" />
+              <span>Trusted By Our Clientele</span>
+            </div>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.12]">
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.12]">
             Brands That Count On{' '}
             <span className="bg-gradient-to-r from-brand-orange via-amber-300 to-brand-electric bg-clip-text text-transparent">
               Aanant Enterprises
